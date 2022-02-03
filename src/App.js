@@ -5,6 +5,7 @@ import Footer from './components/footer/Footer';
 import Inicio from './components/Pages/Inicio';
 import Acerca from './components/Pages/Acerca';
 import Disponibilidad from './components/Services/Pages/Disponibilidad';
+import Traspaso from './components/Services/Pages/Traspaso';
 import {
   BrowserRouter as Router,
   Routes,
@@ -19,9 +20,8 @@ function App() {
         </Route>
         <Route exact path='/acerca' element={<Acerca></Acerca>}>
         </Route>
-        <Route exact path='/disponibilidad' element={<Disponibilidad></Disponibilidad>}>
-
-        </Route>
+        <Route exact path='/disponibilidad' element={<Disponibilidad></Disponibilidad>}></Route>
+        <Route exact path='/traspaso' element={<Traspaso></Traspaso>}></Route>
       </Routes>
       <Footer></Footer>
     </Router>

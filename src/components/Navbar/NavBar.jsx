@@ -11,6 +11,7 @@ const NavbarComp = () => {
             <Nav className="me-auto">             
               <NavDropdown title="Solicitudes" id="basic-nav-dropdown">
                 <NavDropdown.Item as={Link} to="/disponibilidad">Disponibilidad</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/traspaso">Traspaso Paja</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                 <NavDropdown.Divider />
