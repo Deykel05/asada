@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import c from '../../imagenes/carrusel.jpg';
-import Card from '../Services/Carta';
+import Card from '../servicios/Carta';
 const Inicio = () => {
-  return <Fragment>
+  return <>
     <Carousel fade >
       <Carousel.Item interval={2000}>
         <img
@@ -43,7 +43,7 @@ const Inicio = () => {
       </Carousel.Item>
     </Carousel>
     <Card></Card>
-  </Fragment>
+  </>
 };
 
 export default Inicio;

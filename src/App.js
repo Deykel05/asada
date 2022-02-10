@@ -2,10 +2,10 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavbarComp from './components/Navbar/NavBar';
 import Footer from './components/footer/Footer';
-import Inicio from './components/Pages/Inicio';
-import Acerca from './components/Pages/Acerca';
-import Disponibilidad from './components/Services/Pages/Disponibilidad';
-import Traspaso from './components/Services/Pages/Traspaso';
+import Inicio from './components/paginas/Inicio';
+import Acerca from './components/paginas/Acerca';
+import Disponibilidad from './components/servicios/disponibilidad/Disponibilidad';
+import Traspaso from './components/servicios/traspasoPaja/Traspaso';
 import {
   BrowserRouter as Router,
   Routes,

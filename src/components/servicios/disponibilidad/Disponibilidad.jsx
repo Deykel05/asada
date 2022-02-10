@@ -30,29 +30,29 @@ const Disponibilidad = () => {
 
 
 
-  return <Card className="text-center">
-    <Card.Header>Instituto costarricense de Acueductos y Alcantarillados</Card.Header>
-    <Card.Body>
-      <Card.Title className='py-3'>Disponibilidad de Agua Potable y Alcantarillado Sanitario</Card.Title>
-      <Form>
+  return <div className="text-center card">
+    <div className='card-header'>Instituto costarricense de Acueductos y Alcantarillados</div>
+    <div className='card-body'>
+      <h5 className='py-3 card-title'>Disponibilidad de Agua Potable y Alcantarillado Sanitario</h5>
+      <form>
 
         <div className="row">
           <div className="col-1"></div>
           <div className="col-5 card bg-light me-1">
             <Form.Group className="mx-5 my-3">
               <h5 htmlFor="disabledSelect">Servicio Requerido</h5>
-              <Form.Select id="disabledSelect">
+              <select className="form-select" id="disabledSelect">
                 <option>Agua Potable</option>
                 <option>Alcantarillado Sanitario</option>
-              </Form.Select>
+              </select>
             </Form.Group>
             <div className="row  my-3 ">
               <div className="col-6">
-                <Form.Label htmlFor="disabledSelect" >Inmueble tiene servicios asociados?</Form.Label>
+                <label className='form-label' htmlFor="disabledSelect" >Inmueble tiene servicios asociados?</label>
 
               </div>
               <div className="col-2">
-                <ButtonGroup>
+                <div className='btn-group'>
                   {radios.map((radio, idx) => (
                     <ToggleButton
                       key={idx}
@@ -70,7 +70,7 @@ const Disponibilidad = () => {
                       {radio.name}
                     </ToggleButton>
                   ))}
-                </ButtonGroup>
+                </div>
               </div>
               <div className="col-4">
                 {radioValue === '2' && <input type="text" placeholder='Cantidad' className="form-control " />}
@@ -78,8 +78,8 @@ const Disponibilidad = () => {
               </div>
             </div>
             <Form.Group className="mx-5 my-3" >
-              <Form.Label>Cantidad de Unidades Habitacionales en el Inmueble</Form.Label>
-              <Form.Control type="number" placeholder="Cantidad" />
+              <label className='form-label'>Cantidad de Unidades Habitacionales en el Inmueble</label>
+              <input className='className="form-control' type="number" placeholder="Cantidad" />
             </Form.Group>
 
 
@@ -87,13 +87,13 @@ const Disponibilidad = () => {
           <div className="col-5 card bg-light">
             <Form.Group className="mx-5 my-3">
               <h5>Datos de la Propiedad</h5>
-              <Form.Label htmlFor="disabledSelect">Naturaleza del Inmueble</Form.Label>
-              <Form.Select id="disabledSelect" onChange={handleNaturaleza}>
+              <label className='form-label' htmlFor="disabledSelect">Naturaleza del Inmueble</label>
+              <select className="form-select" id="disabledSelect" onChange={handleNaturaleza}>
                 <option selected>Elija una opcion</option>
                 {naturalezaPropiedad.map((n, x) =>
                   <option key={x + '-' + n}>{n}</option>)
                 }
-              </Form.Select>
+              </select>
             </Form.Group>
             {naturaleza !== '' && <TituloPropiedad naturaleza={naturaleza} />}
 
@@ -211,10 +211,10 @@ const Disponibilidad = () => {
 
         </div>
         <Button type="submit">Enviar Solicitud</Button>
-      </Form>
-    </Card.Body>
+      </form>
+    </div>
     <Card.Footer className="text-muted">2 days ago</Card.Footer>
-  </Card>;
+  </div>;
 };
 
 export default Disponibilidad;
