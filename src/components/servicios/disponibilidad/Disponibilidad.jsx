@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Button, Form, ButtonGroup, ToggleButton } from 'react-bootstrap';
+import MediosParaNotificacion from '../MediosParaNotificacion';
 import TituloPropiedad from './TituloPropiedad';
 
 const Disponibilidad = () => {
@@ -208,7 +209,9 @@ const Disponibilidad = () => {
             </div>
           </div>
           <div className="col-1 "></div>
+          <div className="col-1 "></div>
 
+                <MediosParaNotificacion/>
         </div>
         <Button type="submit">Enviar Solicitud</Button>
       </form>
