@@ -39,20 +39,19 @@ const Disponibilidad = () => {
 
         <div className="row">
           <div className="col-1"></div>
-          <div className="col-5 card bg-light me-1">
-            <Form.Group className="mx-5 my-3">
-              <h5 htmlFor="disabledSelect">Servicio Requerido</h5>
-              <select className="form-select" id="disabledSelect">
-                <option>Agua Potable</option>
-                <option>Alcantarillado Sanitario</option>
-              </select>
-            </Form.Group>
-            <div className="row  my-3 ">
+          <div className="col-10 card bg-light my-2 p-3" style={{ height: "280px" }}>
+            <div className="row">
+              <Form.Group className="col-12 my-3">
+                <div className="container px-5">
+                  <h5 htmlFor="disabledSelect">Servicio Requerido</h5>
+                  <select className="form-select text-center" id="disabledSelect">
+                    <option>Agua Potable</option>
+                    <option>Alcantarillado Sanitario</option>
+                  </select>
+                </div>
+              </Form.Group>
               <div className="col-6">
-                <label className='form-label' htmlFor="disabledSelect" >Inmueble tiene servicios asociados?</label>
-
-              </div>
-              <div className="col-2">
+                <label className='form-label w-100' htmlFor="disabledSelect" >Inmueble tiene servicios asociados?</label>
                 <div className='btn-group'>
                   {radios.map((radio, idx) => (
                     <ToggleButton
@@ -73,19 +72,23 @@ const Disponibilidad = () => {
                   ))}
                 </div>
               </div>
-              <div className="col-4">
-                {radioValue === '2' && <input type="text" placeholder='Cantidad' className="form-control " />}
-
+              <div className="col-6">
+                <Form.Group className="mx-5 my-1" >
+                  <label className='form-label'>Cantidad de Unidades Habitacionales en el Inmueble</label>
+                  <input className='form-control' type="number" placeholder="Cantidad" />
+                </Form.Group>
+              </div>
+              <div className="col-6 px-5">
+                <div className="container">
+                  {radioValue === '2' && <input type="number" placeholder='Cantidad' className="form-control " />}
+                </div>
               </div>
             </div>
-            <Form.Group className="mx-5 my-3" >
-              <label className='form-label'>Cantidad de Unidades Habitacionales en el Inmueble</label>
-              <input className='className="form-control' type="number" placeholder="Cantidad" />
-            </Form.Group>
-
-
           </div>
-          <div className="col-5 card bg-light">
+          <div className="col-1 "></div>
+          <div className="col-1 "></div>
+
+          <div className="col-10 card bg-light my-2 p-3">
             <Form.Group className="mx-5 my-3">
               <h5>Datos de la Propiedad</h5>
               <label className='form-label' htmlFor="disabledSelect">Naturaleza del Inmueble</label>
@@ -100,8 +103,9 @@ const Disponibilidad = () => {
 
           </div>
           <div className="col-1 "></div>
+          <div className="col-1 "></div>
 
-          <div className="col-10 bg-light card my-3 p-5">
+          <div className="col-10 bg-light card my-2 p-3">
             <h5 htmlFor="disabledSelect">Nombre del Titular del Inmueble</h5>
             <hr />
             <div className="radio">
@@ -156,7 +160,7 @@ const Disponibilidad = () => {
           <div className="col-1 "></div>
           <div className="col-1 "></div>
 
-          <div className="col-10 bg-light card my-3 p-5">
+          <div className="col-10 bg-light card my-2 p-3">
             <h5 htmlFor="disabledSelect">Localizacion de la Propiedad</h5>
             <hr />
             <div className="radio">
@@ -195,23 +199,27 @@ const Disponibilidad = () => {
                     <input type="text" className="form-control" placeholder="Distrito" />
                   </div>
                 </div>
-                <div className="col-6">
+                <div className="col-6 p-2">
+                  <div className="container">
+                    <input type="text" className="form-control" placeholder="Otras señas" />
+
+                  </div>
+
+                </div>
+                <div className="col-12">
                   <div className="form-floating">
                     <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style={{ resize: "none", height: "100px" }}></textarea>
-                    <label >Razon Social</label>
+                    <label >Direccion exacta del inmueble</label>
                   </div>
                 </div>
-                <div className="col-6">
-                  <input type="number" className="form-control mb-3" placeholder="Numero de Telefono 1" />
-                  <input type="number" className="form-control" placeholder="Numero de Telefono 2" />
-                </div>
+
               </div>
             </div>
           </div>
           <div className="col-1 "></div>
           <div className="col-1 "></div>
 
-                <MediosParaNotificacion/>
+          <MediosParaNotificacion />
         </div>
         <Button type="submit">Enviar Solicitud</Button>
       </form>
