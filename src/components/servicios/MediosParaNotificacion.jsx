@@ -10,23 +10,13 @@ const MediosParaNotificacion = () => {
                 <div className="radio">
                     <div className="row">
                         <div className="col-6 p-2">
-                            <h6>Numeros de Telefono</h6>
-                            <div className="row justify-content-end">
-                                <div className="col-2 p-1">
-                                    <button className='btn btn-info btm-sm'>+</button>
-                                </div>
-                            </div>
-                            <input type="number" className="form-control mb-3" placeholder="Numero de Telefono" />
+                            <input type="number" className="form-control mb-1" placeholder="Numero de Telefono 1" />
+                            <input type="number" className="form-control mb-3" placeholder="Numero de Telefono 2" />
                         </div>
 
                         <div className="col-6 p-2">
-                            <h6>Correos electronicos</h6>
-                            <div className="row justify-content-end">
-                                <div className="col-2 p-1">
-                                    <button className='btn btn-info btm-sm'>+</button>
-                                </div>
-                            </div>
-                            <input type="email" className="form-control" placeholder="Correo Electronico" />
+                            <input type="email" className="form-control mb-1" placeholder="Correo Electronico 1" />
+                            <input type="email" className="form-control mb-3" placeholder="Correo Electronico 2" />
                         </div>
                         <div className="col-12">
                             <div className="form-floating">
@@ -38,6 +28,7 @@ const MediosParaNotificacion = () => {
                     </div>
                 </div>
             </div>
+            <div className="col-1 "></div>
         </>
     )
 }

@@ -6,6 +6,7 @@ import LocalizacionPropiedad from './localizacionPropiedad/LocalizacionPropiedad
 import NombreTitularInmueble from './nombreTitularInmueble/NombreTitularInmueble';
 import ServicioRequerido from './servicioRequerido/ServicioRequerido';
 import '../../../estilos/servicios/styles.css';
+import Corresponde from './solicitudCorrespondeA/Corresponde';
 const Disponibilidad = () => {
 
   const [datosPropiedad, setDatosPropiedad] = useState({
@@ -35,6 +36,8 @@ const Disponibilidad = () => {
             <LocalizacionPropiedad />
 
             <MediosParaNotificacion />
+            
+            <Corresponde/>
           </div>
 
           <Button type="submit">Enviar Solicitud</Button>
