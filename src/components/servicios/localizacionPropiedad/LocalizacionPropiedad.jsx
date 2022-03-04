@@ -9,21 +9,14 @@ const LocalizacionPropiedad = () => {
                 <hr />
                 <div className="radio">
                     <div className="row">
-                        <div className="col-6 p-2">
-                            <div className="input-group mb-3">
+                        <div className="col-12 p-2">
+                            <div className="input-group mb-3 px-1">
                                 <input type="text" className="form-control" placeholder="Provincia" />
                                 <span className="input-group-text"> </span>
                                 <input type="text" className="form-control" placeholder="Canton" />
                                 <span className="input-group-text"> </span>
                                 <input type="text" className="form-control" placeholder="Distrito" />
                             </div>
-                        </div>
-                        <div className="col-6 p-2">
-                            <div className="container">
-                                <input type="text" className="form-control" placeholder="Otras señas" />
-
-                            </div>
-
                         </div>
                         <div className="col-12">
                             <div className="form-floating">

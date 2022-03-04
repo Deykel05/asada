@@ -4,7 +4,7 @@ const MediosParaNotificacion = () => {
     return (
         <>
             <div className="col-1 "></div>
-            <div className="col-10 bg-light card my-3 p-5">
+            <div className="col-10 bg-light card my-2 p-3">
                 <h5 htmlFor="disabledSelect">Medios Para Notificacion</h5>
                 <hr />
                 <div className="radio">

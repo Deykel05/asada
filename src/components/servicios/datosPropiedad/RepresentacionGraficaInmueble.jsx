@@ -11,7 +11,17 @@ const RepresentacionGraficaInmueble = ({ representacionGraficaInmueble, setDatos
     }
     return (
         <>
-            {naturaleza !== '' ?
+            {naturaleza === 'Parcelas Agricolas' || naturaleza === 'Inmueble Inscrito' ?
+                <div className="div">
+                    <label>Representacion grafica del Inmueble</label>
+                    <select className="form-select mb-3" onChange={handleRepresentacion}>
+                        <option value='' >Elija una opcion</option>
+                        <option value='Plano de Catastro' >Plano de Catastro</option>
+                    </select>
+                </div>
+                : null
+            }
+            {naturaleza === 'Terreno sin inscribir' ?
                 <div className="div">
                     <label>Representacion grafica del Inmueble</label>
                     <select className="form-select mb-3" onChange={handleRepresentacion}>
@@ -35,10 +45,17 @@ const RepresentacionGraficaInmueble = ({ representacionGraficaInmueble, setDatos
                 </div>
             }
             {representacionGraficaInmueble === 'Plano de Agrimensura' && naturaleza !== '' &&
-                <div className="input-group mb-3">
-                    <input type="number" className="form-control" placeholder="Condigo APT" />
-                </div>
+                <input className='form-control' type="number" placeholder="Codigo APT" />
+
             }
+            <div className="mx-5 my-3">
+                <div className="form-check">
+                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                    <label className="form-check-label">
+                        No cuenta con plano
+                    </label>
+                </div>
+            </div>
         </>
     )
 }

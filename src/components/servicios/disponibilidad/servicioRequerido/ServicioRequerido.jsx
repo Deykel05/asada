@@ -19,7 +19,6 @@ const ServicioRequerido = () => {
                             <hr />
                             <select className="form-select" id="disabledSelect">
                                 <option>Agua Potable</option>
-                                <option>Alcantarillado Sanitario</option>
                             </select>
                         </div>
                     </div>
@@ -53,7 +52,7 @@ const ServicioRequerido = () => {
                     </div>
                     <div className="col-6 px-5">
                         <div className="container">
-                            {radioValue === '2' && <input type="number" placeholder='Cantidad' className="form-control " />}
+                            {radioValue === '2' && <input type="number" placeholder='Numero de Medidor' className="form-control " />}
                         </div>
                     </div>
                 </div>

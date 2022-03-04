@@ -21,7 +21,7 @@ const Corresponde = () => {
     return (
         <>
             <div className="col-1"></div>
-            <div className="col-10 card bg-light my-3 p-5" style={{ height: "325px" }}>
+            <div className="col-10 card bg-light my-2 p-3" style={{ height: "325px" }}>
                 <div className="row">
                     <div className="p-2">
                         <h5 htmlFor="disabledSelect">La Solicitud de Constancia de Disponibilidad Corresponde a:</h5>
@@ -62,13 +62,7 @@ const Corresponde = () => {
                                     <option>Remodelacion</option>
                                     <option>Ampliacion</option>
                                 </select>
-                                <div className="input-group mb-1">
-                                    <input type="text" className="form-control" placeholder="Caudal Requerido" />
-                                    <span className="input-group-text"> </span>
-                                    <input type="text" className="form-control" placeholder="Niveles de Construccion" />
-                                    <span className="input-group-text"> </span>
-                                    <input type="text" className="form-control" placeholder="Area por Construir" />
-                                </div>
+                              
                                 <div className="div">
                                     <label className='mb-1'>Tipo de Proyecto</label>
                                     <select className="form-select" >
@@ -82,18 +76,6 @@ const Corresponde = () => {
                             : null
                         }
                     </div>
-
-                    {/* <div className="col-6">
-                        <div className="mx-5 my-1" >
-                            <label className='form-label'>Cantidad de Unidades Habitacionales en el Inmueble</label>
-                            <input className='form-control' type="number" placeholder="Cantidad" />
-                        </div>
-                    </div>
-                    <div className="col-6 px-5">
-                        <div className="container">
-                            {radioValue === '2' && <input type="number" placeholder='Cantidad' className="form-control " />}
-                        </div>
-                    </div> */}
                 </div>
             </div>
             <div className="col-1 "></div>

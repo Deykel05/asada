@@ -9,7 +9,7 @@ const DatosPropiedad = ({ datosPropiedad, setDatosPropiedad }) => {
     return (
         <>
             <div className="col-1 "></div>
-            <div className="col-10 card bg-light my-2 p-3" style={{ height: "420px" }}>
+            <div className="col-10 card bg-light my-2 p-3" style={{ height: "450px" }}>
                 <h5>Datos de la Propiedad</h5>
                 <hr />
                 <div className="row">

@@ -4,7 +4,7 @@ import c from '../../imagenes/carrusel.jpg';
 import Card from '../servicios/Carta';
 const Inicio = () => {
   return <>
-    <Carousel fade >
+    <Carousel className='carrusel' fade >
       <Carousel.Item interval={2000}>
         <img
           className="d-block w-100"
