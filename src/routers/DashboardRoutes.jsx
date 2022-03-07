@@ -10,7 +10,6 @@ import Footer from '../components/footer/Footer';
 import NuevaConexion from '../components/servicios/nuevaConexion/NuevaConexion';
 import Inspeccion from '../components/servicios/inspeccion/Inspeccion';
 import Queja from '../components/servicios/queja/Queja';
-import Login from '../components/login/Login';
 
 const DashboardRoutes = () => {
     return (
@@ -23,8 +22,6 @@ const DashboardRoutes = () => {
                 <Route path='traspaso' element={<Traspaso />}></Route>
                 <Route path='inspeccion' element={<Inspeccion />}></Route>
                 <Route path='queja' element={<Queja />}></Route>
-                {/* <Route path='login' element={<Login />}></Route> */}
-
                 <Route path='/' element={<Inicio />}></Route>
 
             </Routes>

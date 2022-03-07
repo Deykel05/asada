@@ -1,9 +1,8 @@
 import React from 'react'
 import '../../estilos/login/styles.css';
 import logo from '../../imagenes/logo.png';
-import { FaFacebook, FaGoogle, FaWhatsapp } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-
+import Footer from '../footer/Footer';
 const Login = () => {
     const navigate = useNavigate();
     const handleLogin = () => {
@@ -58,26 +57,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-                <div className="text-white mb-3 mb-md-0">
-                    Copyright © 2020. All rights reserved.
-                </div>
-
-                <div>
-                    <a href="#!" className="text-white me-4">
-                        <FaFacebook style={{ fontSize: '20px' }} />
-                    </a>
-                    {/* <a href="#!" className="text-white me-4">
-                        <i className="fab fa-twitter"></i>
-                    </a> */}
-                    <a href="#!" className="text-white me-4">
-                        <FaGoogle style={{ fontSize: '20px' }} />
-                    </a>
-                    <a href="#!" className="text-white">
-                        <FaWhatsapp style={{ fontSize: '20px' }} />
-                    </a>
-                </div>
-            </div>
+            <Footer />
         </section>
     )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Admin from '../components/admin/Admin';
+import AdminRoutes from './AdminRoutes';
 import Login from '../components/login/Login';
 import DashboardRoutes from './DashboardRoutes';
 
@@ -14,8 +14,8 @@ const AppRouter = () => {
                 <Route exact path='/login' element={
                     <Login />
                 } />
-                <Route exact path='/admin' element={
-                    <Admin />
+                <Route exact path='/admin/*' element={
+                    <AdminRoutes />
                 } />
             </Routes>
         </Router>
