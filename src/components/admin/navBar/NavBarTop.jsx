@@ -1,10 +1,17 @@
 import React from 'react'
 import { FaBars, FaUser } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { startLogout } from '../../../actions/auth';
 
 const NavBarTop = ({ setNavVertical }) => {
+   
+    const dispatch = useDispatch();
 
     const handleSidebar = () => {
         setNavVertical(nav => !nav);
+    }
+    const handleLogout = () => {
+        dispatch(startLogout());
     }
     return (
         <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -22,7 +29,7 @@ const NavBarTop = ({ setNavVertical }) => {
                         <li><a className="dropdown-item" href="#!">Settings</a></li>
                         <li><a className="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr className="dropdown-divider" /></li>
-                        <li><a className="dropdown-item" href="#!">Logout</a></li>
+                        <li><button className="dropdown-item" onClick={handleLogout}>Logout</button></li>
                     </ul>
                 </li>
             </ul>

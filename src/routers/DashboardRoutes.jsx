@@ -23,7 +23,6 @@ const DashboardRoutes = () => {
                 <Route path='inspeccion' element={<Inspeccion />}></Route>
                 <Route path='queja' element={<Queja />}></Route>
                 <Route path='/' element={<Inicio />}></Route>
-
             </Routes>
             <Footer />
 
