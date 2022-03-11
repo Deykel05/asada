@@ -94,3 +94,15 @@
 .services .icon-box-blue:hover {
   border-color: #2282ff;
 }
+
+.services .icon-box-purple .icon {
+  background: #fee1ff;
+}
+
+.services .icon-box-purple .icon i {
+  color: #ff22ff;
+}
+
+.services .icon-box-purple:hover {
+  border-color: #ff22f4;
+}

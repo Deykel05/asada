@@ -12,7 +12,7 @@ const RepresentacionGraficaInmueble = ({ representacionGraficaInmueble, setDatos
     return (
         <>
             {naturaleza === 'Parcelas Agricolas' || naturaleza === 'Inmueble Inscrito' ?
-                <div className="div">
+                <div className="mx-2 my-3">
                     <label>Representacion grafica del Inmueble</label>
                     <select className="form-select mb-3" onChange={handleRepresentacion}>
                         <option value='' >Elija una opcion</option>
@@ -22,7 +22,7 @@ const RepresentacionGraficaInmueble = ({ representacionGraficaInmueble, setDatos
                 : null
             }
             {naturaleza === 'Terreno sin inscribir' ?
-                <div className="div">
+                <div className="mx-2 my-3">
                     <label>Representacion grafica del Inmueble</label>
                     <select className="form-select mb-3" onChange={handleRepresentacion}>
                         <option value='' >Elija una opcion</option>
@@ -36,26 +36,21 @@ const RepresentacionGraficaInmueble = ({ representacionGraficaInmueble, setDatos
             }
 
             {representacionGraficaInmueble === 'Plano de Catastro' && naturaleza !== '' &&
-                <div className="input-group mb-3">
-                    <input type="number" className="form-control" placeholder="Provincia" />
-                    <span className="input-group-text">-</span>
-                    <input type="number" className="form-control" placeholder="Numero" />
-                    <span className="input-group-text">-</span>
-                    <input type="number" className="form-control" placeholder="Año" />
+                <div className='mx-2 my-3'>
+                    <div className="input-group input-group-sm ">
+                        <input type="number" className="form-control" placeholder="Provincia" />
+                        <span className="input-group-text">-</span>
+                        <input type="number" className="form-control" placeholder="Numero" />
+                        <span className="input-group-text">-</span>
+                        <input type="number" className="form-control" placeholder="Año" />
+                    </div>
                 </div>
             }
             {representacionGraficaInmueble === 'Plano de Agrimensura' && naturaleza !== '' &&
-                <input className='form-control' type="number" placeholder="Codigo APT" />
-
-            }
-            <div className="mx-5 my-3">
-                <div className="form-check">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                    <label className="form-check-label">
-                        No cuenta con plano
-                    </label>
+                <div className='mx-2 my-3'>
+                    <input className='form-control' type="number" placeholder="Codigo APT" />
                 </div>
-            </div>
+            }
         </>
     )
 }

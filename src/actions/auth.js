@@ -1,6 +1,6 @@
+import Swal from 'sweetalert2';
 import { types } from "../types/types";
 import { firebase } from '../firebase/firebase-config';
-
 export const startLoginEmailPassword = (email, password) => {
     return (dispatch) => {
         // dispatch(uiStartLoading());
@@ -11,7 +11,7 @@ export const startLoginEmailPassword = (email, password) => {
             })
             .catch(e => {
                 // dispatch(uiFinishLoading());
-                // Swal.fire('Error',e.message,'error');
+                Swal.fire('Error','Datos Incorrectos','error');
             })
     }
 }

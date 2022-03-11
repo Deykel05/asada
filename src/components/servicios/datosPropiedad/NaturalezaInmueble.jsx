@@ -19,7 +19,7 @@ const NaturalezaInmueble = ({ setDatosPropiedad }) => {
 
     };
     return (
-        <div className="mx-5 my-3 py-5">
+        <div className="mx-2 my-3">
             <label className='form-label' htmlFor="disabledSelect">Naturaleza del Inmueble</label>
             <select className="form-select" onChange={handleNaturaleza}>
                 <option value='' >Elija una opcion</option>

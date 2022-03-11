@@ -7,7 +7,7 @@ const TitularInmueble = ({ naturaleza }) => {
     return (
         <>
             {naturaleza === 'Inmueble Inscrito' || naturaleza === 'Parcelas Agricolas' ?
-                <div className="div">
+                <div className="mx-2 my-3 ">
                     <label>Titular del Inmueble</label>
                     <select className="form-select mb-3" >
                     <option >Elija una opcion</option>
@@ -20,7 +20,7 @@ const TitularInmueble = ({ naturaleza }) => {
             }
             {
                naturaleza === 'Terreno sin inscribir'  ?
-               <div className="div">
+               <div className="mx-2 my-3 ">
                    <label>Titular del Inmueble</label>
                    <select className="form-select mb-3" >
                    <option value='' >Elija una opcion</option>

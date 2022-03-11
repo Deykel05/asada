@@ -21,29 +21,29 @@ const Corresponde = () => {
     return (
         <>
             <div className="col-1"></div>
-            <div className="col-10 card bg-light my-2 p-3" style={{ height: "325px" }}>
+            <div className="col-10 card bg-light my-2 p-3">
+                <h5 htmlFor="disabledSelect">La Solicitud de Constancia de Disponibilidad Corresponde a:</h5>
+                <hr />
                 <div className="row">
-                    <div className="p-2">
-                        <h5 htmlFor="disabledSelect">La Solicitud de Constancia de Disponibilidad Corresponde a:</h5>
-                        <hr />
-                    </div>
-                    <div className="col-5 py-5">
-                        <div className="form-check mx-5">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" onChange={handleRadioChange} value='1' />
-                            <label className="form-check-label">
-                                Proyecto para visados de planos
-                            </label>
-                        </div>
-                        <div className="form-check mx-5">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" onChange={handleRadioChange} value='2' />
-                            <label className="form-check-label" >
-                                Proyetos realcionados en la construccion
-                            </label>
+                    <div className="col-6 ">
+                        <div className='mx-2 my-3'>
+                            <div className="form-check ">
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" onChange={handleRadioChange} value='1' />
+                                <label className="form-check-label">
+                                    Proyecto para visados de planos
+                                </label>
+                            </div>
+                            <div className="form-check ">
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" onChange={handleRadioChange} value='2' />
+                                <label className="form-check-label" >
+                                    Proyetos realcionados en la construccion
+                                </label>
+                            </div>
                         </div>
                     </div>
-                    <div className="col-7 p-2">
+                    <div className="col-6 ">
                         {tipo === '1' ?
-                            <div className="container">
+                            <div className="mx-2 my-3">
                                 <select className="form-select mb-1" id="disabledSelect">
                                     <option >Elija una opcion</option>
                                     <option>Fraccionamiento,Segregacion,Lotificacion</option>
@@ -55,14 +55,14 @@ const Corresponde = () => {
                             : null
                         }
                         {tipo === '2' ?
-                            <div className="container ">
+                            <div className="mx-2 my-3 ">
                                 <select className="form-select mb-1" id="disabledSelect">
                                     <option >Elija una opcion</option>
                                     <option>Nuevo Proyecto Constructivo</option>
                                     <option>Remodelacion</option>
                                     <option>Ampliacion</option>
                                 </select>
-                              
+
                                 <div className="div">
                                     <label className='mb-1'>Tipo de Proyecto</label>
                                     <select className="form-select" >

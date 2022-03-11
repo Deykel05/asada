@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../estilos/cartas/styles.css';
 import { FaHandHoldingWater, FaFaucet, FaEye, FaAngry } from 'react-icons/fa';
+import {BiTransfer} from 'react-icons/bi'
 import { Link } from 'react-router-dom';
 const Card = () => {
     return <section className='services'>
@@ -29,8 +30,8 @@ const Card = () => {
 
                 <div className="col-md-6 col-lg-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
                     <Link as={Link} to="/traspaso" style={{ textDecoration: 'none', color: 'black' }}>
-                        <div className="icon-box icon-box-cyan">
-                            <div className="icon"><FaFaucet style={{ fontSize: '35px' }}></FaFaucet></div>
+                        <div className="icon-box icon-box-purple">
+                            <div className="icon"><BiTransfer style={{ fontSize: '35px' }}></BiTransfer></div>
                             <h4 className="title">Solicitud Traspaso Paja</h4>
                             <p className="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
                         </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
-import c from '../../imagenes/carrusel.jpg';
+import tanque from '../../imagenes/TanqueAgua.jpeg';
+import NacienteMacadamia from '../../imagenes/NacienteMacadamia.jpeg';
 import Card from '../servicios/Carta';
 const Inicio = () => {
   return <>
@@ -8,31 +9,29 @@ const Inicio = () => {
       <Carousel.Item interval={2000}>
         <img
           className="d-block w-100"
-          src={c}
+          src={tanque}
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>Tanque</h3>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={2000}>
         <img
           className="d-block w-100"
-          src={c}
+          src={NacienteMacadamia}
           alt="Second slide"
 
         />
 
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Naciente Macadamia</h3>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={2000}>
         <img
           className="d-block w-100"
-          src={c}
+          src={NacienteMacadamia}
           alt="Third slide"
         />
 

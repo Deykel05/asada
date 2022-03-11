@@ -30,73 +30,102 @@ const NombreTitularInmueble = () => {
                 {tipo === '2' ?
                     <h6 className='mb-3'>Los Siguientes datos corresponden al representante legal</h6>
                     : null}
-                <div className="radio">
+                <div className="body">
                     <div className="row">
-                        <div className="col-6 ">
+                        <div className="col-12 ">
                             <div className="row">
                                 <div className="col-6 ">
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={handleRadioChange} value='1' />
-                                        <label className="form-check-label">
-                                            Persona Fisica
-                                        </label>
-                                    </div>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onChange={handleRadioChange} value='2' />
-                                        <label className="form-check-label" >
-                                            Persona Juridica
-                                        </label>
+                                    <div className='mx-2 my-3'>
+                                        <div className="form-check">
+                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={handleRadioChange} value='1' />
+                                            <label className="form-check-label">
+                                                Persona Fisica
+                                            </label>
+                                        </div>
+                                        <div className="form-check">
+                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onChange={handleRadioChange} value='2' />
+                                            <label className="form-check-label" >
+                                                Persona Juridica
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="col-6 p-2">
-                                    <input type="number" className="form-control" placeholder="Numero de Identificacion" />
+                                    <div className='mx-2 my-3'>
+                                        <input type="number" className="form-control form-control-sm" placeholder="# Identificacion" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-6 p-2">
-                            <div className="input-group mb-3">
-                                <input type="text" className="form-control" placeholder="Nombre" />
-                                <span className="input-group-text"> </span>
-                                <input type="text" className="form-control" placeholder="Primer Apellido" />
-                                <span className="input-group-text"> </span>
-                                <input type="text" className="form-control" placeholder="Segundo Apellido" />
+                        <div className="col-12 p-2">
+                            <div className='mx-2 my-3'>
+                                <div className="input-group input-group-sm mb-3">
+                                    <input type="text" className="form-control" placeholder="Nombre" />
+                                    <span className="input-group-text"> </span>
+                                    <input type="text" className="form-control" placeholder="#1 Apellido" />
+                                    <span className="input-group-text"> </span>
+                                    <input type="text" className="form-control" placeholder="#2 Apellido" />
+                                </div>
                             </div>
                         </div>
-                        <div className="col-6 mb-3">
+                        <div className="col-12 mb-3">
                             {tipo === '1' ?
-                                <div className="form-floating">
-                                    <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style={{ resize: "none", height: "100px" }} disabled></textarea>
-                                    <label >Razon Social (Persona Juridica)</label>
+                                <div className='mx-2 my-3'>
+                                    <div className="form-floating">
+                                        <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style={{ resize: "none", height: "100px" }} disabled></textarea>
+                                        <label >Razon Social (Persona Juridica)</label>
+                                    </div>
                                 </div>
                                 :
-                                <div className="form-floating">
-                                    <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style={{ resize: "none", height: "100px" }} ></textarea>
-                                    <label >Razon Social</label>
+                                <div className='mx-2 my-3'>
+                                    <div className="form-floating">
+                                        <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style={{ resize: "none", height: "100px" }} ></textarea>
+                                        <label >Razon Social</label>
+                                    </div>
                                 </div>
                             }
 
                         </div>
                         <div className="col-6 mb-3">
-                            <input type="number" className="form-control mb-3" placeholder="Numero de Telefono 1" />
-                            <input type="number" className="form-control" placeholder="Numero de Telefono 2" />
+                            <div className='mx-2 my-3'>
+                                <input type="number" className="form-control form-control-sm mb-3" placeholder="# Telefono 1" />
+                            </div>
                         </div>
-                        <div className="col-6 py-5">
-                            <p className='py-1'>En el siguiente espacio adjunte una foto de su cedula</p>
-                            <input type="file" className="form-control mb-3" />
+
+                        <div className="col-6 mb-3">
+                            <div className='mx-2 my-3'>
+                                <input type="number" className="form-control form-control-sm" placeholder="# Telefono 2" />
+                            </div>
                         </div>
-                        <div className="col-6 bg-white mb-3" style={{ height: "250px" }}>
+
+                        <div className="col-5 py-5">
+                            <div className='mx-2 my-3'>
+                                <p className='py-1'>En el siguiente espacio adjunte una foto de su cedula</p>
+                                <input type="file" className="form-control mb-3" />
+                            </div>
+
+                        </div>
+                        <div className="col-7 mb-3" >
+                            <div className='mx-2 my-3 bg-white' style={{ height: "250px" }}>
+
+                            </div>
 
                         </div>
                         {tipo === '2' ?
-                            <div className="col-6 py-5">
-                                <p className='py-1'>En el siguiente espacio adjunte una foto de la personeria juridica</p>
-                                <input type="file" className="form-control mb-3" />
+                            <div className="col-5 py-5">
+                                <div className='mx-2 my-3'>
+                                    <p className='py-1'>En el siguiente espacio adjunte una foto de la personeria juridica</p>
+                                    <input type="file" className="form-control mb-3" />
+                                </div>
                             </div>
                             : null
                         }
                         {tipo === '2' ?
 
-                            <div className="col-6 bg-white" style={{ height: "250px" }}>
+                            <div className="col-7 mb-3" >
+                                <div className='mx-2 my-3 bg-white' style={{ height: "250px" }}>
+
+                                </div>
 
                             </div>
                             : null
