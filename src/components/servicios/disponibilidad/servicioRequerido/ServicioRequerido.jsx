@@ -14,7 +14,7 @@ const ServicioRequerido = () => {
             <div className="col-10 card bg-light my-2 p-3">
                 <div className="row ">
                     <div className="col-12 ">
-                        <h5 htmlFor="disabledSelect">Servicio Requerido</h5>
+                        <h5 >Servicio Requerido</h5>
                         <hr />
                         <div className="mx-2 my-3">
                             <select className="form-select mt-5" id="disabledSelect">
@@ -30,7 +30,7 @@ const ServicioRequerido = () => {
                     </div>
                     <div className="col-12 mt-3">
                         <div className='mx-2 my-3'>
-                            <label className='form-label w-100' htmlFor="disabledSelect" >Inmueble tiene servicios asociados?</label>
+                            <label className='form-label w-100' >Inmueble tiene servicios asociados?</label>
                             <div className='btn-group'>
                                 {radios.map((radio, idx) => (
                                     <ToggleButton

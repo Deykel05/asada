@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import MediosParaNotificacion from '../MediosParaNotificacion';
 import DatosPropiedad from '../datosPropiedad/DatosPropiedad';
@@ -8,15 +8,26 @@ import ServicioRequerido from './servicioRequerido/ServicioRequerido';
 import '../../../estilos/servicios/styles.css';
 import Corresponde from './solicitudCorrespondeA/Corresponde';
 import Informacion from './informacion/Informacion';
+import { useForm } from '../../../hooks/useForm';
 const Disponibilidad = () => {
 
-  const [datosPropiedad, setDatosPropiedad] = useState({
+  //   const [disponibilidad, setDisponibilidad] = useState({
+  //     tipo:'disponibilidad',
+  //     titularInmueble: {},
+  //     localizacionPropiedad: {},
+  //     servicioRequerido: {},
+  //     datosPropiedad: {},
+  //     mediosNotificacion: {},
+  //     solicitudConstancia: {},
+  //     date: new Date().getTime()
+  // });
+  const [formValues, handleInputChange, reset] = useForm({
     naturaleza: '',
-    tituloPropiedad: '',
-    titularInmueble: '',
-    representacionGraficaInmueble: ''
+
   });
 
+  console.log(formValues);
+  // const {datosPropiedad}=disponibilidad;
   return (
     <div className="text-center card">
       <div className='card-header'>Asociación Administradora Acueducto Rural Florida de Siquirres</div>
@@ -25,19 +36,27 @@ const Disponibilidad = () => {
         <form>
 
           <div className="row">
-            <NombreTitularInmueble />
+            <NombreTitularInmueble
+              handleInputChange={handleInputChange}
+              formValues={formValues}
+            />
 
             <LocalizacionPropiedad />
             <ServicioRequerido />
 
             <DatosPropiedad
-              datosPropiedad={datosPropiedad}
-              setDatosPropiedad={setDatosPropiedad}
+              reset={reset}
+              handleInputChange={handleInputChange}
+              formValues={formValues}
             />
-            <MediosParaNotificacion />
+            <MediosParaNotificacion
+              reset={reset}
+              handleInputChange={handleInputChange}
+              formValues={formValues}
+            />
 
             <Corresponde />
-            <Informacion/>
+            <Informacion />
           </div>
 
           <Button type="submit">Enviar Solicitud</Button>

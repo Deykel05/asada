@@ -5,14 +5,30 @@ import RepresentacionGraficaInmueble from './RepresentacionGraficaInmueble';
 import TitularInmueble from './TitularInmueble';
 import TituloPropiedad from './TituloPropiedad';
 
-const DatosPropiedad = ({ datosPropiedad, setDatosPropiedad }) => {
-    const { naturaleza, tituloPropiedad, titularInmueble, representacionGraficaInmueble } = datosPropiedad;
+const DatosPropiedad = ({ formValues, handleInputChange, reset }) => {
+
+
+    const { naturaleza, planoAgrimesura, planoCatastroProvincia, planoCatastroNumero, planoCatastroAño } = formValues
     const [radioValue, setRadioValue] = useState('0');
 
     const radios = [
         { name: 'No', value: '1' },
         { name: 'Si', value: '2' },
     ];
+    if (radioValue !== '2') {
+        if (planoAgrimesura) {
+            delete formValues.planoAgrimesura;
+        }
+        if (planoCatastroProvincia) {
+            delete formValues.planoCatastroProvincia;
+        }
+        if (planoCatastroNumero) {
+            delete formValues.planoCatastroNumero;
+        }
+        if (planoCatastroAño) {
+            delete formValues.planoCatastroAño;
+        }
+    }
     return (
         <>
             <div className="col-1 "></div>
@@ -22,18 +38,22 @@ const DatosPropiedad = ({ datosPropiedad, setDatosPropiedad }) => {
                 <div className="row">
                     <div className="col-12 ">
                         <NaturalezaInmueble
-                            setDatosPropiedad={setDatosPropiedad}
+                            formValues={formValues}
+                            handleInputChange={handleInputChange}
+                            reset={reset}
                         />
                     </div>
                     <div className="col-12">
 
                         <TituloPropiedad
-                            naturaleza={naturaleza}
+                            formValues={formValues}
+                            handleInputChange={handleInputChange}
                         />
                     </div>
                     <div className="col-12">
                         <TitularInmueble
-                            naturaleza={naturaleza}
+                            formValues={formValues}
+                            handleInputChange={handleInputChange}
                         />
                     </div>
                     <div className="col-12">
@@ -52,6 +72,20 @@ const DatosPropiedad = ({ datosPropiedad, setDatosPropiedad }) => {
                                             checked={radioValue === radio.value}
                                             onChange={(e) => {
                                                 setRadioValue(e.currentTarget.value);
+                                                if (radioValue !== '2') {
+                                                    if (planoAgrimesura) {
+                                                        delete formValues.planoAgrimesura;
+                                                    }
+                                                    if (planoCatastroProvincia) {
+                                                        delete formValues.planoCatastroProvincia;
+                                                    }
+                                                    if (planoCatastroNumero) {
+                                                        delete formValues.planoCatastroNumero;
+                                                    }
+                                                    if (planoCatastroAño) {
+                                                        delete formValues.planoCatastroAño;
+                                                    }
+                                                }
                                             }}
                                         >
                                             {radio.name}
@@ -62,9 +96,8 @@ const DatosPropiedad = ({ datosPropiedad, setDatosPropiedad }) => {
                             : null}
                         {radioValue === '2' ?
                             <RepresentacionGraficaInmueble
-                                representacionGraficaInmueble={representacionGraficaInmueble}
-                                setDatosPropiedad={setDatosPropiedad}
-                                naturaleza={naturaleza}
+                                formValues={formValues}
+                                handleInputChange={handleInputChange}
                             />
                             : null}
                     </div>
