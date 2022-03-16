@@ -22,18 +22,22 @@ const Disponibilidad = () => {
   //     date: new Date().getTime()
   // });
   const [formValues, handleInputChange, reset] = useForm({
+    tipo: 'disponibilidad',
     naturaleza: '',
+    fecha: new Date().getTime(),
+    tipoPersona:'1'
 
   });
-
+  const handleForm = e => {
+    e.preventDefault();
+  }
   console.log(formValues);
-  // const {datosPropiedad}=disponibilidad;
   return (
     <div className="text-center card">
       <div className='card-header'>Asociación Administradora Acueducto Rural Florida de Siquirres</div>
       <div className='card-body'>
         <h5 className='py-3 card-title'>Disponibilidad de Agua Potable</h5>
-        <form>
+        <form onSubmit={handleForm}>
 
           <div className="row">
             <NombreTitularInmueble
@@ -41,21 +45,26 @@ const Disponibilidad = () => {
               formValues={formValues}
             />
 
-            <LocalizacionPropiedad />
-            <ServicioRequerido />
+            <LocalizacionPropiedad
+              handleInputChange={handleInputChange}
+            />
+            <ServicioRequerido
+              handleInputChange={handleInputChange}
+              formValues={formValues}
+            />
 
             <DatosPropiedad
-              reset={reset}
               handleInputChange={handleInputChange}
               formValues={formValues}
             />
             <MediosParaNotificacion
-              reset={reset}
+              handleInputChange={handleInputChange}
+            />
+
+            <Corresponde
               handleInputChange={handleInputChange}
               formValues={formValues}
             />
-
-            <Corresponde />
             <Informacion />
           </div>
 

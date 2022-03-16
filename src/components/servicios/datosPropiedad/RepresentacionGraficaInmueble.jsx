@@ -28,7 +28,7 @@ const RepresentacionGraficaInmueble = ({ handleInputChange, formValues }) => {
             {naturaleza === 'Parcelas Agricolas' || naturaleza === 'Inmueble Inscrito' ?
                 <div className="mx-2 my-3">
                     <label>Representacion grafica del Inmueble</label>
-                    <select className="form-select mb-3" onChange={handleRepresentacion}>
+                    <select className="form-select mb-3" onChange={handleRepresentacion} required>
                         <option value='' >Elija una opcion</option>
                         <option value='Plano de Catastro' >Plano de Catastro</option>
                     </select>
@@ -38,7 +38,7 @@ const RepresentacionGraficaInmueble = ({ handleInputChange, formValues }) => {
             {naturaleza === 'Terreno sin inscribir' ?
                 <div className="mx-2 my-3">
                     <label>Representacion grafica del Inmueble</label>
-                    <select className="form-select mb-3" onChange={handleRepresentacion}>
+                    <select className="form-select mb-3" onChange={handleRepresentacion} required>
                         <option value='' >Elija una opcion</option>
                         {representacionGrafica.map((n, x) =>
                             <option key={x + '-' + n}>{n}</option>)
@@ -52,18 +52,18 @@ const RepresentacionGraficaInmueble = ({ handleInputChange, formValues }) => {
             {representacionGraficaInmueble === 'Plano de Catastro' && naturaleza !== '' ?
                 <div className='mx-2 my-3'>
                     <div className="input-group input-group-sm ">
-                        <input type="number" className="form-control" placeholder="Provincia" name='planoCatastroProvincia' onChange={handleInputChange} />
+                        <input type="number" className="form-control" placeholder="Provincia" name='planoCatastroProvincia' onChange={handleInputChange} required/>
                         <span className="input-group-text">-</span>
-                        <input type="number" className="form-control" placeholder="Numero" name='planoCatastroNumero' onChange={handleInputChange} />
+                        <input type="number" className="form-control" placeholder="Numero" name='planoCatastroNumero' onChange={handleInputChange} required/>
                         <span className="input-group-text">-</span>
-                        <input type="number" className="form-control" placeholder="Año" name='planoCatastroAño' onChange={handleInputChange} />
+                        <input type="number" className="form-control" placeholder="Año" name='planoCatastroAño' onChange={handleInputChange} required/>
                     </div>
                 </div>
                 : null
             }
             {representacionGraficaInmueble === 'Plano de Agrimensura' && naturaleza !== '' ?
                 <div className='mx-2 my-3'>
-                    <input className='form-control' type="number" placeholder="Codigo APT" name='planoAgrimesura' onChange={handleInputChange} />
+                    <input className='form-control' type="number" placeholder="Codigo APT" name='planoAgrimesura' onChange={handleInputChange} required/>
                 </div>
                 : null
             }

@@ -2,6 +2,7 @@ import Swal from 'sweetalert2';
 import { db } from "../firebase/firebase-config";
 import { collection, addDoc, updateDoc, doc, setDoc, deleteDoc } from "firebase/firestore";
 import { types } from "../types/types";
+import { fileUpload } from '../helpers/fileUpload';
 // export const startNewRequest = (newRequest) => {
 //     return async (dispatch, getState) => {
 
@@ -29,5 +30,27 @@ export const addNewRequest = (request) => ({
     type: types.requestsAddNew,
     payload: {
         ...request
+    }
+})
+export const startUploading = (file, name) => {
+    return async (dispatch) => {
+        // Swal.fire({
+        //     title: 'Uploading...',
+        //     text: 'Please wait...',
+        //     allowOutsideClick: false,
+        //     showConfirmButton: false,
+        //     willOpen: () => {
+        //         Swal.showLoading();
+        //     }
+        // });
+        const fileUrl = await fileUpload(file);
+        dispatch(loadUrl(fileUrl, name));
+        Swal.close();
+    }
+}
+export const loadUrl = (fileUrl, name) => ({
+    type: types.requestsLoadUrl,
+    payload: {
+        [name]: fileUrl
     }
 })

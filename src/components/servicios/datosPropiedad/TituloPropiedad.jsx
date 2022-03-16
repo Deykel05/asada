@@ -29,11 +29,11 @@ const TituloPropiedad = ({ handleInputChange, formValues }) => {
           <label className='form-label mx-5'>Titulo de Propiedad</label>
         </div>
         <div className="input-group input-group-sm mb-3">
-          <input type="number" className="form-control" name='tituloPropiedadProvincia' placeholder="Provincia" onChange={handleInputChange} />
+          <input type="number" className="form-control" name='tituloPropiedadProvincia' placeholder="Provincia" onChange={handleInputChange} required/>
           <span className="input-group-text">-</span>
-          <input type="number" className="form-control" name='tituloPropiedadNumero' placeholder="Numero" onChange={handleInputChange} />
+          <input type="number" className="form-control" name='tituloPropiedadNumero' placeholder="Numero" onChange={handleInputChange} required/>
           <span className="input-group-text">-</span>
-          <input type="number" className="form-control" name='tituloPropiedadDerecho' placeholder="Derecho" onChange={handleInputChange} />
+          <input type="number" className="form-control" name='tituloPropiedadDerecho' placeholder="Derecho" onChange={handleInputChange} required/>
         </div>
       </div>
       : null
@@ -44,7 +44,7 @@ const TituloPropiedad = ({ handleInputChange, formValues }) => {
           <div>
             <label className='form-label mx-5'>Titulo de Propiedad</label>
           </div>
-          <select className="form-select" onChange={handleInputChange} name='tituloPropiedad'>
+          <select className="form-select" onChange={handleInputChange} name='tituloPropiedad' required>
             <option value='' >Elija una opcion</option>
             <option >Declaracion Jurada Privada</option>
             <option >Declaracion Jurada Protocolizada</option>
