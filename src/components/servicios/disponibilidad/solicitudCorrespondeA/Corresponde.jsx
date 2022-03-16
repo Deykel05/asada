@@ -2,10 +2,14 @@ import React from 'react'
 import { useState } from 'react';
 
 const Corresponde = ({ handleInputChange, formValues }) => {
+
+    const { correspondeTipoProyecto, correspondeCantidadLotes } = formValues;
+
     const [corresponde, setCorresponde] = useState({
         tipo: ""
     });
     const { tipo } = corresponde;
+
     const handleRadioChange = e => {
         if (e.target.value === '1') {
             setCorresponde({
@@ -18,6 +22,16 @@ const Corresponde = ({ handleInputChange, formValues }) => {
             })
         }
     }
+    if (tipo === '1') {
+        if (correspondeTipoProyecto) {
+            delete formValues.correspondeTipoProyecto;
+        }
+    }
+    if (tipo === '2') {
+        if (correspondeCantidadLotes) {
+            delete formValues.correspondeCantidadLotes;
+        }
+    }
     return (
         <>
             <div className="col-1"></div>
@@ -28,7 +42,7 @@ const Corresponde = ({ handleInputChange, formValues }) => {
                     <div className="col-6 ">
                         <div className='mx-2 my-3'>
                             <div className="form-check ">
-                                <input className="form-check-input" type="radio" name='radioCorresponde' onChange={handleRadioChange} value='1' required/>
+                                <input className="form-check-input" type="radio" name='radioCorresponde' onChange={handleRadioChange} value='1' required />
                                 <label className="form-check-label">
                                     Proyecto para visados de planos
                                 </label>
@@ -50,7 +64,7 @@ const Corresponde = ({ handleInputChange, formValues }) => {
                                     <option>Reunion de Fincas</option>
                                     <option>Rectificacion de medidas</option>
                                 </select>
-                                <input className='form-control' type="number" placeholder="Cantidad de Lotes" name='correspondeCantidadLotes' onChange={handleInputChange} required/>
+                                <input className='form-control' type="number" placeholder="Cantidad de Lotes" name='correspondeCantidadLotes' onChange={handleInputChange} required />
                             </div>
                             : null
                         }

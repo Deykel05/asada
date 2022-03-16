@@ -9,25 +9,22 @@ import '../../../estilos/servicios/styles.css';
 import Corresponde from './solicitudCorrespondeA/Corresponde';
 import Informacion from './informacion/Informacion';
 import { useForm } from '../../../hooks/useForm';
+import { useSelector } from 'react-redux';
 const Disponibilidad = () => {
 
-  //   const [disponibilidad, setDisponibilidad] = useState({
-  //     tipo:'disponibilidad',
-  //     titularInmueble: {},
-  //     localizacionPropiedad: {},
-  //     servicioRequerido: {},
-  //     datosPropiedad: {},
-  //     mediosNotificacion: {},
-  //     solicitudConstancia: {},
-  //     date: new Date().getTime()
-  // });
-  const [formValues, handleInputChange, reset] = useForm({
-    tipo: 'disponibilidad',
+  
+  const [formValues, handleInputChange, reset,setValues] = useForm({
+    tipoSolicitud: 'disponibilidad',
     naturaleza: '',
     fecha: new Date().getTime(),
     tipoPersona:'1'
-
+    
   });
+
+  // const datos = useSelector(state => state.request);
+  // if(datos.urlCedulaPersona){
+
+  // }
   const handleForm = e => {
     e.preventDefault();
   }
@@ -43,6 +40,7 @@ const Disponibilidad = () => {
             <NombreTitularInmueble
               handleInputChange={handleInputChange}
               formValues={formValues}
+              setValues={setValues}
             />
 
             <LocalizacionPropiedad

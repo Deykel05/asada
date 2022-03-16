@@ -8,14 +8,9 @@ import TituloPropiedad from './TituloPropiedad';
 const DatosPropiedad = ({ formValues, handleInputChange, reset }) => {
 
 
-    const { naturaleza, planoAgrimesura, planoCatastroProvincia, planoCatastroNumero, planoCatastroAño } = formValues
-    const [radioValue, setRadioValue] = useState('0');
+    const { naturaleza, planoAgrimesura, planoCatastroProvincia, planoCatastroNumero, planoCatastroAño, cuentaConPlano } = formValues
 
-    const radios = [
-        { name: 'No', value: '1' },
-        { name: 'Si', value: '2' },
-    ];
-    if (radioValue !== '2') {
+    if (cuentaConPlano !== 'Si') {
         if (planoAgrimesura) {
             delete formValues.planoAgrimesura;
         }
@@ -59,42 +54,25 @@ const DatosPropiedad = ({ formValues, handleInputChange, reset }) => {
                     <div className="col-12">
                         {naturaleza !== '' ?
                             <div className="mx-5 my-3">
-                                <label className='form-label w-100' htmlFor="disabledSelect" >Cuenta con plano ?</label>
-                                <div className='btn-group'>
-                                    {radios.map((radio, idx) => (
-                                        <ToggleButton
-                                            key={`radioDatos-${idx}`}
-                                            id={`radioDatos-${idx}`}
-                                            type="radio"
-                                            variant={idx % 2 ? 'outline-success  mx-1' : 'outline-danger '}
-                                            name="radioDatosPropiedad"
-                                            value={radio.value}
-                                            checked={radioValue === radio.value}
-                                            onChange={(e) => {
-                                                setRadioValue(e.currentTarget.value);
-                                                if (radioValue !== '2') {
-                                                    if (planoAgrimesura) {
-                                                        delete formValues.planoAgrimesura;
-                                                    }
-                                                    if (planoCatastroProvincia) {
-                                                        delete formValues.planoCatastroProvincia;
-                                                    }
-                                                    if (planoCatastroNumero) {
-                                                        delete formValues.planoCatastroNumero;
-                                                    }
-                                                    if (planoCatastroAño) {
-                                                        delete formValues.planoCatastroAño;
-                                                    }
-                                                }
-                                            }}
-                                        >
-                                            {radio.name}
-                                        </ToggleButton>
-                                    ))}
+                                <label className='form-label w-100'  >Cuenta con plano ?</label>
+                                <div className='row justify-content-center' >
+                                    <div className="col-auto">
+                                        <div className="form-check ">
+                                            <input className="form-check-input " type="radio" name="cuentaConPlano" value='Si' onChange={handleInputChange} required />
+                                            <label className="form-check-label"> Si</label>
+                                        </div>
+
+                                    </div>
+                                    <div className="col-auto">
+                                        <div className="form-check ">
+                                            <input className="form-check-input " type="radio" name="cuentaConPlano" value='No' onChange={handleInputChange} />
+                                            <label className="form-check-label" > No </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             : null}
-                        {radioValue === '2' ?
+                        {cuentaConPlano && cuentaConPlano === 'Si' ?
                             <RepresentacionGraficaInmueble
                                 formValues={formValues}
                                 handleInputChange={handleInputChange}

@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
-import { ToggleButton } from 'react-bootstrap';
 
-const ServicioRequerido = ({ handleInputChange }) => {
+const ServicioRequerido = ({ handleInputChange, formValues }) => {
+
+    const { numeroMedidor } = formValues;
+
     const [radioValue, setRadioValue] = useState('0');
-    console.log(radioValue);
 
+    if (radioValue === '1') {
+        if (numeroMedidor) {
+            delete formValues.numeroMedidor;
+        }
+    }
     return (
         <>
             <div className="col-1"></div>
@@ -32,7 +38,7 @@ const ServicioRequerido = ({ handleInputChange }) => {
                             <div className='row justify-content-center' >
                                 <div className="col-auto">
                                     <div className="form-check ">
-                                        <input className="form-check-input " type="radio" name="radioServicioAsociado" value='2' required="required" onChange={e => { setRadioValue(e.target.value) }} />
+                                        <input className="form-check-input " type="radio" name="radioServicioAsociado" value='2' onChange={e => { setRadioValue(e.target.value) }} required />
                                         <label className="form-check-label"> Si</label>
                                     </div>
 
