@@ -1,195 +1,231 @@
-import React, { useState } from 'react';
-import { Card, Button, Form, ButtonGroup, ToggleButton } from 'react-bootstrap';
+import React from 'react';
+import { Card, Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { startNewRequest } from '../../../actions/requests';
+import { useForm } from '../../../hooks/useForm';
+import MediosParaNotificacion from '../MediosParaNotificacion';
 
 const Traspaso = () => {
-    const [radioValue, setRadioValue] = useState('0');
 
-    const radios = [
-        { name: 'No', value: '1' },
-        { name: 'Si', value: '2' },
-    ];
-    return <Card className="text-center">
-        <Card.Header>Instituto costarricense de Acueductos y Alcantarillados</Card.Header>
-        <Card.Body>
-            <Card.Title>Cambio del nombre del titular del servicio a solicitud del usuario </Card.Title>
+    const dispatch = useDispatch();
 
-            <div className="row">
-                <div className="col-10"></div>
-                <div className="col-2">Fecha: {new Date().toLocaleString("en-US", { day: '2-digit' })}/
-                    {new Date().toLocaleString("en-US", { month: "2-digit" })}/
-                    {new Date().getFullYear()}
-                </div>
-            </div><br />
-            <Form>
+    const [formValues, handleInputChange, reset, setValues] = useForm({
+        tipoSolicitud: 'traspaso',
+        fecha: new Date().getTime(),
+        tipoPersona: '1'
+    });
+    const { inmuebleConstaDe, representacionGrafica, planoCatastroProvincia, planoCatastroNumero,
+        planoCatastroDerecho, codigoApt, declaracionJurada, certificacionProvincia, certificacionNumero, certificacionDerecho } = formValues;
+    const listaTipos = ['Propietario Registral', 'Representante Legal', 'Autorizado Legal'];
+    if (representacionGrafica && representacionGrafica === 'Plano de Agrimesura') {
+        if (planoCatastroProvincia) {
+            delete formValues.planoCatastroProvincia;
+        }
+        if (planoCatastroNumero) {
+            delete formValues.planoCatastroNumero;
+        }
+        if (planoCatastroDerecho) {
+            delete formValues.planoCatastroDerecho;
+        }
+    }
+    if (representacionGrafica && representacionGrafica === 'Plano de Catastro') {
+        if (codigoApt) {
+            delete formValues.codigoApt;
+        }
+    }
+    if (inmuebleConstaDe && inmuebleConstaDe === 'Certificacion Literal') {
+        if (declaracionJurada) {
+            delete formValues.declaracionJurada;
+        }
+    }
+    if (inmuebleConstaDe && inmuebleConstaDe === 'Declaracion Jurada') {
+        if (certificacionProvincia) {
+            delete formValues.certificacionProvincia;
+        }
+        if (certificacionNumero) {
+            delete formValues.certificacionNumero;
+        }
+        if (certificacionDerecho) {
+            delete formValues.certificacionDerecho;
+        }
+    }
+    const handleForm = e => {
+        e.preventDefault();
+        dispatch(startNewRequest(formValues));
+        reset({
+            tipoSolicitud: 'traspaso',
+            fecha: new Date().getTime(),
+            tipoPersona: '1'
+        });
+    }
+    return (
+        <div className="text-center card" >
+            <div className='card-header '>Asociación Administradora Acueducto Rural Florida de Siquirres</div>
+            <div className='card-body pt-4'>
+                <h5 className='py-3 card-title'>Solicitud de Traspaso Paja</h5>
+                <form onSubmit={handleForm}>
+                    <div className="row  mb-3">
+                        <div className="col-1"></div>
+                        <div className="col-10 bg-light card my-2 p-3 ">
+                            <div className="row  gx-2 gy-1 align-items-center">
+                                <div className="col-md-12 ">
+                                    <div className='mx-2 my-3'>
+                                        <label className='form-label' >El suscrito</label>
+                                        <div className="input-group input-group-sm mb-1">
+                                            <input type="text" className="form-control" placeholder="Nombre" name='nombreSuscrito' onChange={handleInputChange} required />
+                                            <span className="input-group-text">-</span>
+                                            <input type="text" className="form-control" placeholder="#1 Apellido" name='primerApellidoSuscrito' onChange={handleInputChange} required />
+                                            <span className="input-group-text">-</span>
+                                            <input type="text" className="form-control" placeholder="#2 Apellido" name='segundoApellidoSuscrito' onChange={handleInputChange} required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-md-6 ">
+                                    <div className='mx-2 my-3'>
+                                        <label className='form-label' >Documento de identificación numero</label>
+                                        <input type="number" className="form-control form-control-sm" placeholder="# Identificacion" name='cedulaSuscrito' onChange={handleInputChange} required />
+                                    </div>
+                                </div>
+                                <div className="col-md-6 ">
+                                    <div className='mx-2 my-3'>
+                                        <label className='form-label' >En calidad de</label>
+                                        <select className="form-select form-select-sm" name='enCalidadDe' onChange={handleInputChange} required>
+                                            <option value='' >Elija una opcion</option>
+                                            {listaTipos.map((n, x) =>
+                                                <option key={x + '-' + n}>{n}</option>)
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div className="col-md-6">
+                                    <div className='mx-2 my-3'>
+                                        <label className='form-label' >Por ser titular del inmueble que consta de</label>
+                                        <select className="form-select form-select-sm" name='inmuebleConstaDe' onChange={handleInputChange} required>
+                                            <option value='' >Elija una opcion</option>
+                                            <option >Certificacion Literal</option>
+                                            <option >Declaracion Jurada</option>
+                                        </select>
 
-                <div className="row">
-                    <div className="col-1"></div>
-                    <div className="col-10 card bg-light">
-                        <Form.Group className="row mx-5 my-3">
-                            <div className="col-1"></div>
-                            <div className="col-3">
-                                <Form.Label htmlFor="disabledSelect">El suscrito:  <input type="text" placeholder='Nombre' className="form-control " />
-                                </Form.Label>
-                            </div>
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className='mx-2 my-3'>
+                                        {inmuebleConstaDe && inmuebleConstaDe === 'Certificacion Literal' &&
+                                            <>
+                                                <label className='form-label' >Certificacion Literal</label>
+                                                <div className="input-group input-group-sm mb-2">
+                                                    <input type="number" className="form-control" placeholder="Provincia" name='certificacionProvincia' onChange={handleInputChange} required />
+                                                    <span className="input-group-text">-</span>
+                                                    <input type="number" className="form-control" placeholder="Numero" name='certificacionNumero' onChange={handleInputChange} required />
+                                                    <span className="input-group-text">-</span>
+                                                    <input type="number" className="form-control" placeholder="Derecho" name='certificacionDerecho' onChange={handleInputChange} required />
 
-                            <div className="col-1"></div>
-                            <div className="col-3">
-                                <Form.Label htmlFor="disabledSelect"> en calida de:
-                                    <Form.Select id="disabledSelect">
-                                        <option>Propietario Registral</option>
-                                        <option>Representante Legal</option>
-                                    </Form.Select> </Form.Label>
-                            </div>
-                            <div className="col-1"></div>
-                            <div className="col-3">
-                                <Form.Label htmlFor="disabledSelect">Identificación número:  <input type="text" placeholder='00-0000-0000' className="form-control " />
-                                </Form.Label>
-                            </div>
-                            <div className="col-12"><hr /></div>
-                            <div className="col-1"></div>
-                            <div className="col-5">
-                                <Form.Label htmlFor="disabledSelect"> Por ser el titular del inmueble que consta en:</Form.Label>
-                                <Form.Select id="disabledSelect">
-                                    <option value="certificacion">Certificación Literal</option>
-                                    <option value="concesion">Concesión</option>
-                                </Form.Select>
-                            </div>
-                            <div className="col-5">
-                                <Form.Label htmlFor="disabledSelect"> Folio real o matricula:
-                                    <input type="text" placeholder='00-0000-00' className="form-control " />
-                                </Form.Label>
-                            </div>
-                            <div className="col-12"><hr /></div>
+                                                </div>
+                                            </>
+                                        }
+                                        {inmuebleConstaDe && inmuebleConstaDe === 'Declaracion Jurada' &&
+                                            <>
+                                                <label className='form-label' >Declaracion Jurada</label>
+                                                <input type="number" className="form-control form-control-sm" placeholder="Privada o Protocolizada" name='declaracionJurada' onChange={handleInputChange} required />
+                                            </>
+                                        }
+                                    </div>
+                                </div>
+                                <hr />
+                                <div className="col-md-6">
+                                    <div className='mx-2 my-3'>
+                                        <label className='form-label' >Que se representa gráficamente mediante</label>
+                                        <select className="form-select form-select-sm" name='representacionGrafica' onChange={handleInputChange} required>
+                                            <option value='' >Elija una opcion</option>
+                                            <option >Plano de Catastro</option>
+                                            <option >Plano de Agrimesura</option>
+                                        </select>
 
-                            <div className="col-1"></div>
-                            <div className="col-5">
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className='mx-2 my-3'>
+                                        {representacionGrafica && representacionGrafica === 'Plano de Catastro' &&
+                                            <>
+                                                <label className='form-label' >Plano de Catastro</label>
+                                                < div className="input-group input-group-sm mb-2">
+                                                    <input type="number" className="form-control" placeholder="Provincia" name='planoCatastroProvincia' onChange={handleInputChange} required />
+                                                    <span className="input-group-text">-</span>
+                                                    <input type="number" className="form-control" placeholder="Numero" name='planoCatastroNumero' onChange={handleInputChange} required />
+                                                    <span className="input-group-text">-</span>
+                                                    <input type="number" className="form-control" placeholder="Derecho" name='planoCatastroDerecho' onChange={handleInputChange} required />
 
-                                <Form.Label htmlFor="disabledSelect"> Que se representa graficamente mediante:</Form.Label>
-                                <Form.Select id="disabledSelect">
-                                    <option value="certificacion">Plano de Catastro</option>
-                                    <option value="concesion">Plano de Agrimensura</option>
-                                </Form.Select>
-                            </div>
-                            <div className="col-5">
-                                <Form.Label htmlFor="disabledSelect"> <br />
-                                    <input type="text" placeholder='00-0000-00' className="form-control " />
-                                </Form.Label>
-                            </div>
-                            <div className="col-12"><hr /></div>
-
-                            <div className="col-1"></div>
-
-                            <div className="col-4">
-                                <Form.Label htmlFor="disabledSelect"> Solicito realizar el cambio de nombre de contrato del INS
-                                    <input type="text" placeholder='' className="form-control " />
-                                </Form.Label>
-                            </div>
-
-                            <div className="col-7"> <br/>
-                                <Form.Label htmlFor="disabledSelect"> A nombre de:
-                                <input type="text" placeholder='' className="form-control " />
-                                </Form.Label>
-                            </div>
-
-                            <div className="col-12"><hr /></div>
-
-                            <Card.Title >Persona Fisica </Card.Title>
-
-                            <div className="col-3">
-                                <Form.Label htmlFor="disabledSelect"> Nombre:
-                                    <input type="text" placeholder='' className="form-control " />
-                                </Form.Label>
-                            </div>
-
-                            <div className="col-3">
-                                <Form.Label htmlFor="disabledSelect"> 1er Apellido:
-                                    <input type="text" placeholder='' className="form-control " />
-                                </Form.Label>
-                            </div>
-
-                            <div className="col-3">
-                                <Form.Label htmlFor="disabledSelect"> 2do Apellido:
-                                    <input type="text" placeholder='' className="form-control " />
-                                </Form.Label>
-                            </div>
-
-                            <div className="col-3">
-                                <Form.Label htmlFor="disabledSelect"> Cedula o Pasaporte:
-                                    <input type="text" placeholder='' className="form-control " />
-                                </Form.Label>
-                            </div>
-
-
-                            <div className="col-12"><hr /></div>
-
-                            <Card.Title > Personas Juridicas </Card.Title>
-
-                            <div className="col-2"></div>
-                            <div className="col-3">
-                                <Form.Label htmlFor="disabledSelect"> Razon social
-                                    <input type="text" placeholder='' className="form-control " />
-                                </Form.Label>
-                            </div>
-                            <div className="col-2"></div>
-                            <div className="col-3">
-                                <Form.Label htmlFor="disabledSelect"> Cedula Juridica:
-                                    <input type="text" placeholder='' className="form-control " />
-                                </Form.Label>
-                            </div>
-
-                        </Form.Group>
-
-
-
-                        {/*
-
-                        <div className="row  my-3 ">
-                            <div className="col-6">
-                                <Form.Label htmlFor="disabledSelect" >Inmueble tiene servicios asociados?</Form.Label>
-
-                            </div>
-                            <div className="col-2">
-                                <ButtonGroup>
-                                    {radios.map((radio, idx) => (
-                                        <ToggleButton
-                                            key={idx}
-                                            id={`radio-${idx}`}
-                                            type="radio"
-                                            variant={idx % 2 ? 'outline-success  mx-1' : 'outline-danger '}
-                                            name="radio"
-                                            value={radio.value}
-                                            checked={radioValue === radio.value}
-                                            onChange={(e) => {
-                                                setRadioValue(e.currentTarget.value);
-                                                return console.log(e.currentTarget.value)
-                                            }}
-                                        >
-                                            {radio.name}
-                                        </ToggleButton>
-                                    ))}
-                                </ButtonGroup>
-                            </div>
-                            <div className="col-4">
-                                {radioValue === '1' ? <input type="text" placeholder='Cantidad' className="form-control " /> : null}
+                                                </div>
+                                            </>
+                                        }
+                                        {representacionGrafica && representacionGrafica === 'Plano de Agrimesura' &&
+                                            <>
+                                                <label className='form-label' >Plano de Agrimesura</label>
+                                                <input type="number" className="form-control form-control-sm" placeholder="Codigo APT" name='codigoApt' onChange={handleInputChange} required />
+                                            </>
+                                        }
+                                    </div>
+                                </div>
+                                <hr />
+                                <div className="col-md-6">
+                                    <div className='mx-2 my-3'>
+                                        <label className='form-label' >Solicito el traspaso del numero de paja</label>
+                                        <input type="number" className="form-control form-control-sm" placeholder="Numero de Paja" name='numeroPaja' onChange={handleInputChange} required />
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className='mx-2 my-3'>
+                                        <label className='form-label' >A nombre de:</label>
+                                        <div className="input-group input-group-sm mb-2">
+                                            <input type="text" className="form-control" placeholder="Nombre" name='nombreNuevoSuscrito' onChange={handleInputChange} required />
+                                            <span className="input-group-text">-</span>
+                                            <input type="text" className="form-control" placeholder="#1 Apellido" name='primerApellidoNuevoSuscrito' onChange={handleInputChange} required />
+                                            <span className="input-group-text">-</span>
+                                            <input type="text" className="form-control" placeholder="#2 Apellido" name='segundoApellidoNuevoSuscrito' onChange={handleInputChange} required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className="row justify-content-center">
+                                        <div className="col-auto">
+                                            <div className='mx-2 my-3' onChange={handleInputChange}>
+                                                <div className="form-check">
+                                                    <input className="form-check-input" type="radio" name="tipoPersona" id="flexRadioDefault1" value='1' required />
+                                                    <label className="form-check-label">
+                                                        Persona Fisica
+                                                    </label>
+                                                </div>
+                                                <div className="form-check">
+                                                    <input className="form-check-input" type="radio" name="tipoPersona" id="flexRadioDefault2" value='2' />
+                                                    <label className="form-check-label" >
+                                                        Persona Juridica
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className='mx-2 my-3'>
+                                        <label className='form-label' >Documento de identificación numero</label>
+                                        <input type="number" className="form-control form-control-sm" name='cedulaNuevoSuscrito' placeholder="# Identificacion" onChange={handleInputChange} required />
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
-                        <Form.Group className="mx-5 my-3" >
-                            <Form.Label>Cantidad de Unidades Habitacionales en el Inmueble</Form.Label>
-                            <Form.Control type="number" placeholder="Cantidad" />
-                        </Form.Group>
-
-                                                    */}
+                        <div className="col-1 "></div>
+                        <MediosParaNotificacion
+                            handleInputChange={handleInputChange}
+                        />
                     </div>
-
-
-
-                </div><br/>
-                <Button type="submit">Enviar Solicitud</Button>
-            </Form>
-        </Card.Body>
-        <Card.Footer className="text-muted">2 days ago</Card.Footer>
-    </Card>;
+                    <Button type="submit">Enviar Solicitud</Button>
+                </form>
+            </div >
+            <Card.Footer className="text-muted">La ASADA Florida cuenta con 3 dias habiles para contestar la solicitud</Card.Footer>
+        </div >
+    )
 };
 
 export default Traspaso;

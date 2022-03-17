@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { ToggleButton } from 'react-bootstrap';
+import React from 'react'
 import NaturalezaInmueble from './NaturalezaInmueble'
 import RepresentacionGraficaInmueble from './RepresentacionGraficaInmueble';
 import TitularInmueble from './TitularInmueble';

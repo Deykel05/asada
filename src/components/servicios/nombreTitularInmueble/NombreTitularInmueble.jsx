@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { startUploading } from '../../../actions/requests';
+import { startUploading } from '../../../actions/imagesUrl';
 
 const NombreTitularInmueble = ({ handleInputChange, formValues, setValues }) => {
 
-    const { datos } = useSelector(state => state.request);
+    const { datos } = useSelector(state => state.imagesUrl);
     const dispatch = useDispatch();
-    const { tipoPersona, razonSocialPersona, urlPersoneriaJuridica,urlCedulaPersona } = formValues;
+    const { tipoPersona, razonSocialPersona, urlPersoneriaJuridica, urlCedulaPersona } = formValues;
     useEffect(() => {
         if (datos) {
             console.log(datos);

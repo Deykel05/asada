@@ -106,3 +106,14 @@
 .services .icon-box-purple:hover {
   border-color: #ff22f4;
 }
+.services .icon-box-yellow .icon {
+  background: #fffde1;
+}
+
+.services .icon-box-yellow .icon i {
+  color: #fffb22;
+}
+
+.services .icon-box-yellow:hover {
+  border-color: #fffb22;
+}

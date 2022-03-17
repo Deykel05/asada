@@ -18,11 +18,7 @@ export const requestsReducer = (state = {}, action) => {
                 ...state,
                 datos: action.payload
             }
-        case types.requestsLoadUrl:
-            return {
-                ...state,
-                datos: action.payload
-            }
+        
         default:
             return state;
     }

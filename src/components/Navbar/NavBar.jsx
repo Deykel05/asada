@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import logo from '../../imagenes/logo.png';
@@ -15,6 +15,7 @@ const NavbarComp = () => {
               <NavDropdown.Item as={Link} to="/disponibilidad">Disponibilidad</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/nuevaConexion">Nueva Conexion</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/traspaso">Traspaso Paja</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/suspension">SuspensionServicio</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/inspeccion">Inspeccion</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/queja">Sugerencias(Quejas)</NavDropdown.Item>
             </NavDropdown>

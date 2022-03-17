@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../estilos/cartas/styles.css';
-import { FaHandHoldingWater, FaFaucet, FaEye, FaAngry } from 'react-icons/fa';
-import {BiTransfer} from 'react-icons/bi'
+import { FaHandHoldingWater, FaFaucet, FaEye, FaAngry,FaExclamationTriangle } from 'react-icons/fa';
+import { BiTransfer } from 'react-icons/bi'
 import { Link } from 'react-router-dom';
 const Card = () => {
     return <section className='services'>
@@ -37,7 +37,16 @@ const Card = () => {
                         </div>
                     </Link>
                 </div>
-                <div className="w-100"></div>
+                <div className="col-md-6 col-lg-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                    <Link as={Link} to="/suspension" style={{ textDecoration: 'none', color: 'black' }}>
+                        <div className="icon-box icon-box-yellow">
+                            <div className="icon"><FaExclamationTriangle style={{ fontSize: '35px' }}></FaExclamationTriangle></div>
+                            <h4 className="title">Solicitud Suspension Servicio</h4>
+                            <p className="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                        </div>
+                    </Link>
+                </div>
+                {/* <div className="w-100"></div> */}
                 <div className="col-md-6 col-lg-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
                     <Link as={Link} to="/inspeccion" style={{ textDecoration: 'none', color: 'black' }}>
                         <div className="icon-box icon-box-green">

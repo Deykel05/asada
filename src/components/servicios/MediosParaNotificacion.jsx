@@ -8,7 +8,7 @@ const MediosParaNotificacion = ({ handleInputChange }) => {
                 <h5 htmlFor="disabledSelect">Medios Para Notificacion</h5>
                 <hr />
                 <div className="radio">
-                    <div className="row">
+                    <div className="row ">
                         <div className="col-6 ">
                             <div className='mx-2 my-3'>
                                 <input type="number" className="form-control form-control-sm mb-1" placeholder="# Telefono 1" name='mediosNotificacionTelefono1' onChange={handleInputChange} required/>

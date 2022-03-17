@@ -1,18 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 const NaturalezaInmueble = ({ handleInputChange, formValues }) => {
     const naturalezaPropiedad = ['Inmueble Inscrito', 'Parcelas Agricolas', 'Terreno sin inscribir'];
-    const { naturaleza } = formValues;
-
-    // useEffect(() => {
-    //     if (naturaleza === '') {
-    //         reset({
-    //             naturaleza: ''
-    //         })
-    //     }
-    // }, [naturaleza]);
-
-
     return (
         <div className="mx-2 my-3">
             <label className='form-label' htmlFor="disabledSelect">Naturaleza del Inmueble</label>

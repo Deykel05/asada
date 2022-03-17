@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import MediosParaNotificacion from '../MediosParaNotificacion';
 import DatosPropiedad from '../datosPropiedad/DatosPropiedad';
@@ -9,26 +9,31 @@ import '../../../estilos/servicios/styles.css';
 import Corresponde from './solicitudCorrespondeA/Corresponde';
 import Informacion from './informacion/Informacion';
 import { useForm } from '../../../hooks/useForm';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { startNewRequest } from '../../../actions/requests';
 const Disponibilidad = () => {
 
-  
-  const [formValues, handleInputChange, reset,setValues] = useForm({
+  const dispatch = useDispatch();
+
+  const [formValues, handleInputChange, reset, setValues] = useForm({
     tipoSolicitud: 'disponibilidad',
     naturaleza: '',
     fecha: new Date().getTime(),
-    tipoPersona:'1'
-    
+    tipoPersona: '1'
+
   });
+  console.log(formValues);
 
-  // const datos = useSelector(state => state.request);
-  // if(datos.urlCedulaPersona){
-
-  // }
   const handleForm = e => {
     e.preventDefault();
+    dispatch(startNewRequest(formValues));
+    reset({
+      tipoSolicitud: 'disponibilidad',
+      naturaleza: '',
+      fecha: new Date().getTime(),
+      tipoPersona: '1'
+    });
   }
-  console.log(formValues);
   return (
     <div className="text-center card">
       <div className='card-header'>Asociación Administradora Acueducto Rural Florida de Siquirres</div>

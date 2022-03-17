@@ -1,10 +1,6 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { addNewRequest } from '../../../actions/requests';
-import { useForm } from '../../../hooks/useForm';
+import React from 'react';
 
 const TituloPropiedad = ({ handleInputChange, formValues }) => {
-  const dispatch = useDispatch();
   const { naturaleza, tituloPropiedad, tituloPropiedadProvincia, tituloPropiedadNumero, tituloPropiedadDerecho } = formValues;
   if (naturaleza === 'Inmueble Inscrito' || naturaleza === 'Parcelas Agricolas') {
     if (tituloPropiedad) {

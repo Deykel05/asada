@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormaPago = () => {
+const FormaPago = ({handleInputChange}) => {
     return (
         <>
             <div className="col-1"></div>
@@ -12,21 +12,21 @@ const FormaPago = () => {
                             <hr />
                         </div>
                     </div>
-                    <div className="col-7 ">
+                    <div className="col-7 " onChange={handleInputChange}>
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault"  value='1' />
+                            <input className="form-check-input" type="radio" name="formaPago"  value='1' required/>
                             <label className="form-check-label">
                                 En efectivo en un solo tracto, previo a la conexion del servicio
                             </label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault"  value='2' />
+                            <input className="form-check-input" type="radio" name="formaPago"  value='2' />
                             <label className="form-check-label" >
                                 Incluir el monto por tarifa de dececho de conexion en la primer facturacion
                             </label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault"  value='2' />
+                            <input className="form-check-input" type="radio" name="formaPago"  value='3' />
                             <label className="form-check-label" >
                                 Arreglo de pago
                             </label>

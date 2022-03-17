@@ -15,10 +15,10 @@ const ServicioRequerido = ({ handleInputChange, formValues }) => {
         <>
             <div className="col-1"></div>
             <div className="col-10 card bg-light my-2 p-3">
+                <h5 >Servicio Requerido</h5>
+                <hr />
                 <div className="row ">
                     <div className="col-12 ">
-                        <h5 >Servicio Requerido</h5>
-                        <hr />
                         <div className="mx-2 my-3">
                             <select className="form-select mt-5" name='servicioRequerido' onChange={handleInputChange} required>
                                 <option value=''>Elija una opcion</option>
