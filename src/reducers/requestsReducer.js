@@ -8,17 +8,23 @@ import { types } from "../types/types";
 //     mediosNotificacion: {},
 //     solicitudConstancia: {}
 // }
-// const initalState = {
-//     datos: []
-// }
-export const requestsReducer = (state = {}, action) => {
+const initalState = {
+    requests: [],
+    activeRequest: null
+}
+export const requestsReducer = (state = initalState, action) => {
     switch (action.type) {
         case types.requestsAddNew:
             return {
                 ...state,
                 datos: action.payload
             }
-        
+        case types.requestsLoad:
+            return {
+                ...state,
+                requests:[... action.payload]
+            }
+
         default:
             return state;
     }

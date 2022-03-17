@@ -19,8 +19,7 @@ const NavbarComp = () => {
               <NavDropdown.Item as={Link} to="/inspeccion">Inspeccion</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/queja">Sugerencias(Quejas)</NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link as={Link} to="/acerca" >Acerca de</Nav.Link>
-            <Nav.Link href="#link">Contacto</Nav.Link>
+            <Nav.Link as={Link} to="/contacto">Contacto</Nav.Link>
             <Nav.Link as={Link} to="/login">Administrador</Nav.Link>
           </Nav>
         </Navbar.Collapse>

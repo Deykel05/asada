@@ -23,8 +23,6 @@ const NuevaConexion = () => {
     tipoPersona: '1'
 
   });
-  console.log(formValues);
-
   const handleForm = e => {
     e.preventDefault();
     dispatch(startNewRequest(formValues));

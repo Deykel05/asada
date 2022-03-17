@@ -8,6 +8,7 @@ import DashboardRoutes from './DashboardRoutes';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import Login from '../components/login/Login';
+import { startLoadingRequests } from '../actions/requests';
 
 const AppRouter = () => {
     const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const AppRouter = () => {
             if (user?.uid) {
                 dispatch(login(user.uid, user.displayName));
                 setIsLoggedIn(true);
+                dispatch(startLoadingRequests(user.uid));
             } else {
                 setIsLoggedIn(false);
             }

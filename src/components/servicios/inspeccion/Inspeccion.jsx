@@ -17,7 +17,6 @@ const Inspeccion = () => {
         fecha: new Date().getTime()
     });
     const { motivoInspeccion, motivoInspeccionDetallado } = formValues;
-    console.log(formValues);
 
     if (motivoInspeccion && motivoInspeccion !== 'Otro') {
         if (motivoInspeccionDetallado) {

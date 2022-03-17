@@ -1,42 +1,49 @@
 import React from 'react'
 import DataTable from '../../dataTable/DataTableBase';
 import { FaAngleRight, FaTable } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
+import moment from 'moment';
+
+
 const ListaSolicitudes = () => {
+    const { requests } = useSelector(state => state.request);
+    console.log(requests);
     const columns = [
         {
-            name: 'name',
+            name: 'Nombre',
             selector: row => row.name,
         },
         {
-            name: 'type',
-            selector: row => row.type,
+            name: 'Tipo',
+            selector: row => row.tipoSolicitud,
         },
         {
-            name: 'date',
-            selector: row => row.date,
+            name: 'Fecha',
+            selector: row =>moment(row.fecha,'YYYYMMDD').fromNow() ,
         }
     ];
-
-    const data = [
-        {
-            id: 1,
-            name: 'Beetlejuice',
-            type: 'Disponibilidad',
-            date: '1988'
-        },
-        {
-            id: 2,
-            name: 'Beetlejuice',
-            type: 'Disponibilidad',
-            date: '1988'
-        },
-        {
-            id: 3,
-            name: 'Beetlejuice',
-            type: 'Disponibilidad',
-            date: '1988'
-        },
-    ]
+    const data = [];
+    requests.map(req => data.push(req));
+    // const data = [
+    //     {
+    //         id: 1,
+    //         name: 'Beetlejuice',
+    //         type: 'Disponibilidad',
+    //         date: '1988'
+    //     },
+    //     {
+    //         id: 2,
+    //         name: 'Beetlejuice',
+    //         type: 'Disponibilidad',
+    //         date: '1988'
+    //     },
+    //     {
+    //         id: 3,
+    //         name: 'Beetlejuice',
+    //         type: 'Disponibilidad',
+    //         date: '1988'
+    //     },
+    // ]
     return (
         <main>
             <div className="container-fluid px-4">

@@ -14,8 +14,6 @@ const Suspension = () => {
         fecha: new Date().getTime(),
         tipoPersona: '1'
     });
-
-    console.log(formValues);
     const handleForm = e => {
         e.preventDefault();
         dispatch(startNewRequest(formValues));
