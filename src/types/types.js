@@ -7,6 +7,7 @@ export const types = {
 
     requestsAddNew: '[Requests] Add new request',
     requestsLoad: '[Requests] Load request',
+    requestsActive: '[Requests] Active request',
     requestsClean: '[Requests] Clean request',
 
     imagesLoadUrl: '[Images] Load image url'

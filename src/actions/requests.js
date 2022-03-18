@@ -26,6 +26,13 @@ export const setRequests = (requests) => ({
     type: types.requestsLoad,
     payload: requests
 });
+export const activeRequest = (id, note) => ({
+    type: types.requestsActive,
+    payload: {
+        id,
+        ...note
+    }
+});
 // export const addNewRequest = (id, request) => ({
 //     type: types.requestsAddNew,
 //     payload: {

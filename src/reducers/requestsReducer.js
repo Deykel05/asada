@@ -10,7 +10,7 @@ import { types } from "../types/types";
 // }
 const initalState = {
     requests: [],
-    activeRequest: null
+    active: null
 }
 export const requestsReducer = (state = initalState, action) => {
     switch (action.type) {
@@ -19,10 +19,17 @@ export const requestsReducer = (state = initalState, action) => {
                 ...state,
                 datos: action.payload
             }
+        case types.requestsActive:
+            return {
+                ...state,
+                active: {
+                    ...action.payload
+                }
+            }
         case types.requestsLoad:
             return {
                 ...state,
-                requests:[... action.payload]
+                requests: [...action.payload]
             }
 
         default:

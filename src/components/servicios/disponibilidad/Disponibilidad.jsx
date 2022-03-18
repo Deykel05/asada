@@ -9,7 +9,7 @@ import '../../../estilos/servicios/styles.css';
 import Corresponde from './solicitudCorrespondeA/Corresponde';
 import Informacion from './informacion/Informacion';
 import { useForm } from '../../../hooks/useForm';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { startNewRequest } from '../../../actions/requests';
 const Disponibilidad = () => {
 
@@ -22,7 +22,6 @@ const Disponibilidad = () => {
     tipoPersona: '1'
 
   });
-  console.log(formValues);
 
   const handleForm = e => {
     e.preventDefault();
