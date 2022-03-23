@@ -89,7 +89,7 @@ export const DisponibilidadAdmin = React.forwardRef(({ request }, ref) => {
                                     }
 
                                 </li>
-                                <li className="list-group-item">Titular del inmueble:<input type="text" className='form-control form-control-sm  border-0' name='nombrePersona' value={formValues.titularInmueble} onChange={handleInputChange} /> </li>
+                                <li className="list-group-item">Titular del inmueble:<input type="text" className='form-control form-control-sm  border-0' name='titularInmueble' value={formValues.titularInmueble} onChange={handleInputChange} /> </li>
                                 <li className="list-group-item">Cuenta con plano?:
                                     <input type="text" className="form-control form-control-sm border-0" name='cuentaConPlano' value={request.cuentaConPlano} onChange={handleInputChange} />
                                 </li>
@@ -123,40 +123,41 @@ export const DisponibilidadAdmin = React.forwardRef(({ request }, ref) => {
                         <div className="col-md-4 my-2">
                             <ul className="list-group">
                                 <li className="list-group-item active" aria-current="true">La solicitud de constancia de disponibilidad</li>
-                                <li className="list-group-item">Corresponde a: <input type="text" className='form-control form-control-sm border-0' name='mediosNotificacionDireccionExacta' value={formValues.correspondeA} onChange={handleInputChange} /> </li>
+                                <li className="list-group-item">Corresponde a: <input type="text" className='form-control form-control-sm border-0' name='correspondeA' value={formValues.correspondeA} onChange={handleInputChange} /> </li>
                                 {request.correspondeTipoProyecto ?
                                     <li className="list-group-item">Tipo Proyecto:
-                                        <input type="text" className='form-control form-control-sm border-0' name='mediosNotificacionDireccionExacta' value={request.correspondeTipoProyecto} onChange={handleInputChange} />
+                                        <input type="text" className='form-control form-control-sm border-0' name='correspondeTipoProyecto' value={request.correspondeTipoProyecto} onChange={handleInputChange} />
                                     </li>
                                     :
                                     <li className="list-group-item ">Cantidad de lotes:
-                                        <input type="text" className='form-control form-control-sm border-0' name='razonSocialPersona' value={formValues.correspondeCantidadLotes} onChange={handleInputChange} />
+                                        <input type="text" className='form-control form-control-sm border-0' name='correspondeCantidadLotes' value={formValues.correspondeCantidadLotes} onChange={handleInputChange} />
                                     </li>
                                 }
 
                             </ul>
                         </div>
-                        <div className="col-md-12 my-2" >
-                            <ul className="list-group">
-                                <li className="list-group-item active" aria-current="true">Imagenes</li>
-                                {request.urlCedulaPersona &&
-                                    <li className="list-group-item">Foto cedula:
-                                        <img src={request.urlCedulaPersona} style={{ objectFit: "contain", height: "50vh", width: "100%" }} alt='cedulaPersona' />
-                                    </li>
-                                }
-                                {request.urlPersoneriaJuridica &&
-                                    <li className="list-group-item">Foto personeria juridica:
-                                        <img src={request.urlPersoneriaJuridica} style={{ objectFit: "contain", height: "50vh", width: "100%" }} alt='personeriaJuridca' />
-                                    </li>
-                                }
-                                {request.urlPlanoInmueble &&
-                                    <li className="list-group-item">Foto plano inmueble:
-                                        <img src={request.urlPlanoInmueble} style={{ objectFit: "contain", height: "50vh", width: "100%" }} alt='personeriaJuridca' />
-                                    </li>
-                                }
+                            <div className="col-md-12 my-2" >
+                                <ul className="list-group">
+                                    <li className="list-group-item active" aria-current="true">Imagenes</li>
+                                    {request.urlCedulaPersona &&
+                                        <li className="list-group-item">Foto cedula:
+                                            <img src={request.urlCedulaPersona} style={{ objectFit: "contain", height: "50vh", width: "100%" }} alt='cedulaPersona' />
+                                        </li>
+                                    }
+                                    {request.urlPersoneriaJuridica &&
+                                        <li className="list-group-item">Foto personeria juridica:
+                                            <img src={request.urlPersoneriaJuridica} style={{ objectFit: "contain", height: "50vh", width: "100%" }} alt='personeriaJuridca' />
+                                        </li>
+                                    }
+                                    {request.urlPlanoInmueble &&
+                                        <li className="list-group-item">Foto plano inmueble:
+                                            <img src={request.urlPlanoInmueble} style={{ objectFit: "contain", height: "50vh", width: "100%" }} alt='personeriaJuridca' />
+                                        </li>
+                                    }
 
-                            </ul>
-                        </div>
+                                </ul>
+                            </div>
+                        
                         <div className="col-md-12 my-2">
                             <ul className="list-group">
                                 <li className="list-group-item active" aria-current="true">Firma del solicitante,representante legal o autorizado</li>

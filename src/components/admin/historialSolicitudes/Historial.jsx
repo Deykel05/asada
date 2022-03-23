@@ -2,7 +2,7 @@ import React from 'react'
 import DataTable from '../../dataTable/DataTableBase';
 import { FaTable } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { activeRequest } from '../../../actions/requests';
+import { activeRequest, startDeleting } from '../../../actions/requests';
 import moment from 'moment';
 import { es } from 'moment/locale/es';
 import SolicitudActiva from '../solicitudActiva/SolicitudActiva';
@@ -15,6 +15,9 @@ const Historial = () => {
   const handleActiveRequest = (row) => {
     dispatch(activeRequest(row.id, row));
   }
+  const handleDelete = (row) => {
+    dispatch(startDeleting(row.id));
+}
   const columns = [
 
     {
@@ -42,6 +45,27 @@ const Historial = () => {
               <p>Devuelto</p>
           }
 
+        </div>
+      )
+    },
+    {
+      name: 'Accion',
+      button: true,
+      cell: (row) => (
+        <div className="App">
+          <div className="text-center">
+            <button
+              key={row.id}
+              onClick={() => {
+                handleDelete(row);
+              }}
+              type="button"
+              className="btn btn-sm btn-danger"
+            >
+              Eliminar
+            </button>
+
+          </div>
         </div>
       )
     },

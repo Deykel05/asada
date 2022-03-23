@@ -55,11 +55,13 @@ const ListaSolicitudes = () => {
         }
     ];
     const data = [];
-    requests.filter(req => {
-        if (req.estado === '1') {
-            data.push(req);
-        }
-    })
+    if (requests) {
+        requests.filter(req => {
+            if (req.estado === '1') {
+                data.push(req);
+            }
+        })
+    }
 
     return (
         <main>

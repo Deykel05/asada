@@ -1,13 +1,5 @@
 import { types } from "../types/types";
 
-// const initialState = {
-//     titularInmueble: {},
-//     localizacionPropiedad: {},
-//     servicioRequerido: {},
-//     datosPropiedad: {},
-//     mediosNotificacion: {},
-//     solicitudConstancia: {}
-// }
 const initalState = {
     requests: [],
     active: null
@@ -43,6 +35,17 @@ export const requestsReducer = (state = initalState, action) => {
             return {
                 ...state,
                 requests: [...action.payload]
+            }
+        case types.requestsDelete:
+            return {
+                ...state,
+                active: null,
+                requests: state.requests.filter(request => request.id !== action.payload)
+            }
+        case types.requestsLogoutClean:
+            return {
+                active: null,
+                notes: []
             }
 
         default:

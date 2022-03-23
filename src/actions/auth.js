@@ -1,6 +1,7 @@
 import Swal from 'sweetalert2';
 import { types } from "../types/types";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { requestsLogout } from './requests';
 export const startLoginEmailPassword = (email, password) => {
     return (dispatch) => {
         // dispatch(uiStartLoading());
@@ -30,6 +31,8 @@ export const startLogout = () => {
         const auth = getAuth();
         await signOut(auth);
         dispatch(logout());
+        dispatch(requestsLogout());
+
     }
 };
 

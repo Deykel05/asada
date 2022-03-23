@@ -5,6 +5,7 @@ import { useReactToPrint } from 'react-to-print';
 import { activeRequest, startSaveRequest } from '../../../actions/requests';
 import { useForm } from '../../../hooks/useForm';
 import { DisponibilidadAdmin } from './disponibilidadAdmin/DisponibilidadAdmin';
+import { InspeccionAdmin } from './inspeccionAdmin/InspeccionAdmin';
 import { PrevistaNuevaAdmin } from './previstaNueva/PrevistaNuevaAdmin';
 import { SuspensionAdmin } from './suspensionAdmin/SuspensionAdmin';
 import { TraspasoAdmin } from './traspasoAdmin/TraspasoAdmin';
@@ -37,7 +38,6 @@ const SolicitudActiva = ({ request }) => {
         dispatch(activeRequest(request.id, { ...formValues }));
     }, [formValues, dispatch])
 
-    console.log(formValues.estado);
     return (
         <>
             <div className="text-center card" >
@@ -71,7 +71,13 @@ const SolicitudActiva = ({ request }) => {
                 {tipoSolicitud === 'disponibilidad' &&
                     <DisponibilidadAdmin ref={componentRef} request={request} />
                 }
-                {tipoSolicitud === 'Nueva Conexion' &&
+                {tipoSolicitud === 'nueva conexion' &&
+                    <PrevistaNuevaAdmin ref={componentRef} request={request} />
+                }
+                {tipoSolicitud === 'individualizacion' &&
+                    <PrevistaNuevaAdmin ref={componentRef} request={request} />
+                }
+                {tipoSolicitud === 'traslado de conexion' &&
                     <PrevistaNuevaAdmin ref={componentRef} request={request} />
                 }
                 {tipoSolicitud === 'suspension' &&
@@ -79,6 +85,9 @@ const SolicitudActiva = ({ request }) => {
                 }
                 {tipoSolicitud === 'traspaso' &&
                     <TraspasoAdmin ref={componentRef} request={request} />
+                }
+                {tipoSolicitud === 'inspeccion' &&
+                    <InspeccionAdmin ref={componentRef} request={request} />
                 }
             </div >
 

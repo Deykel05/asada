@@ -42,7 +42,7 @@ const Card = () => {
                         <div className="icon-box icon-box-yellow">
                             <div className="icon"><FaExclamationTriangle style={{ fontSize: '35px' }}></FaExclamationTriangle></div>
                             <h4 className="title">Solicitud Suspension Servicio</h4>
-                            <p className="description pb-4">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                            <p className="description pb-4">En caso de no requerir el servicio, una vez cancelado los montos de recibos pendientes y la tarifa de desconexión, puede solicitar la suspensión.</p>
                         </div>
                     </Link>
                 </div>
@@ -52,7 +52,7 @@ const Card = () => {
                         <div className="icon-box icon-box-green">
                             <div className="icon"><FaEye style={{ fontSize: '35px' }}></FaEye></div>
                             <h4 className="title">Solicitud Inspeccion</h4>
-                            <p className="description pb-4">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est</p>
+                            <p className="description ">En caso de detectar altos consumos, puede solicitar una inspección para verificar la existencia de fugas internas, o en el medidor, o descartar errores de lectura y facturación.</p>
                         </div>
                     </Link>
                 </div>
@@ -62,7 +62,7 @@ const Card = () => {
                         <div className="icon-box icon-box-blue">
                             <div className="icon"><FaAngry style={{ fontSize: '35px' }}></FaAngry></div>
                             <h4 className="title">Sugerencias(Quejas)</h4>
-                            <p className="description">En caso de tener alguna recomendación, consulta, duda o queja, puede hacerlo formalmente para tener una respuesta oportuna.                                                </p>
+                            <p className="description pb-4">En caso de tener alguna recomendación, consulta, duda o queja, puede hacerlo formalmente para tener una respuesta oportuna.</p>
                         </div>
                     </Link>
                 </div>

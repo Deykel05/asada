@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import moment from 'moment';
 import { es } from 'moment/locale/es';
-
+import { useForm } from '../../../../hooks/useForm';
+import { useDispatch } from 'react-redux';
+import { activeRequest } from '../../../../actions/requests';
 export const PrevistaNuevaAdmin = React.forwardRef(({ request }, ref) => {
     moment.locale(es);
+    const dispatch = useDispatch();
 
+    const [formValues, handleInputChange, reset, setValues] = useForm({
+        ...request
+    });
+    useEffect(() => {
+        dispatch(activeRequest(formValues.id, { ...formValues }));
+    }, [formValues, dispatch])
     return (
         <div className='card-body pt-4' ref={ref}>
             <div className="row  mb-3">
@@ -12,32 +21,35 @@ export const PrevistaNuevaAdmin = React.forwardRef(({ request }, ref) => {
                     <div className="row  gx-2 gy-1 align-items-top">
                         <h5 className='py-3 card-title'>Solicitud de Prevista Nueva</h5>
                         <h6 className='text-end'>Fecha: {moment(request.fecha).format("MMMM Do YYYY")}</h6>
-                        <div className="col-md-4 ">
+                        <div className="col-md-4 my-2">
                             <ul className="list-group">
                                 <li className="list-group-item active" aria-current="true">Nombre del titular del inmueble</li>
                                 <li className="list-group-item">Tipo :
                                     {request.tipoPersona && request.tipoPersona === '1' ?
-                                        <span className='fw-bold'>Persona Fisica</span>
+                                        <input type="text" className='form-control form-control-sm  border-0' name='tipoPersona' value='Persona Fisica' onChange={handleInputChange} />
                                         :
-                                        <span className='fw-bold'>Persona Juridica</span>
+                                        <input type="text" className='form-control form-control-sm  border-0' name='tipoPersona' value='Persona Juridica' onChange={handleInputChange} />
                                     }
                                 </li>
-                                <li className="list-group-item">Nombre completo: <span className='fw-bold'> {request.nombrePersona}</span></li>
-                                <li className="list-group-item">N de identificacion: <span className='fw-bold'> {request.cedulaPersona}</span></li>
+                                <li className="list-group-item">Nombre : <input type="text" className='form-control form-control-sm  border-0' name='nombrePersona' value={formValues.nombrePersona} onChange={handleInputChange} /></li>
+                                <li className="list-group-item">Primer apellido: <input type="text" className='form-control form-control-sm border-0' name='primerApellidoPersona' value={formValues.primerApellidoPersona} onChange={handleInputChange} /></li>
+                                <li className="list-group-item">Segundo apellido: <input type="text" className='form-control form-control-sm border-0' name='segundoApellidoPersona' value={formValues.segundoApellidoPersona} onChange={handleInputChange} /></li>
+
+                                <li className="list-group-item">N de identificacion: <input type="text" className='form-control form-control-sm border-0' name='cedulaPersona' value={formValues.cedulaPersona} onChange={handleInputChange} /> </li>
                                 {request.razonSocialPersona &&
-                                    <li className="list-group-item">Razon social: <span className='fw-bold'> {request.razonSocialPersona}</span></li>
+                                    <li className="list-group-item">Razon social: <input type="text" className='form-control form-control-sm border-0' name='razonSocialPersona' value={formValues.razonSocialPersona} onChange={handleInputChange} /></li>
                                 }
-                                <li className="list-group-item">N Telefono 1: <span className='fw-bold'> {request.telefonoUnoPersona}</span></li>
-                                <li className="list-group-item">N Telefono 2: <span className='fw-bold'> {request.telefonoDosPersona}</span></li>
+                                <li className="list-group-item">N Telefono 1: <input type="text" className='form-control form-control-sm border-0' name='telefonoUnoPersona' value={formValues.telefonoUnoPersona} onChange={handleInputChange} /></li>
+                                <li className="list-group-item">N Telefono 2: <input type="text" className='form-control form-control-sm border-0' name='telefonoDosPersona' value={formValues.telefonoDosPersona} onChange={handleInputChange} /> </li>
                             </ul>
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-4 my-2">
                             <ul className="list-group">
                                 <li className="list-group-item active" aria-current="true">Localizacion de la propiedad</li>
-                                <li className="list-group-item">Provincia: <span className='fw-bold'> {request.provinciaLocalizacionPropiedad}</span></li>
-                                <li className="list-group-item">Canton: <span className='fw-bold'> {request.cantonLocalizacionPropiedad}</span></li>
-                                <li className="list-group-item">Distrito: <span className='fw-bold'> {request.distritoLocalizacionPropiedad}</span></li>
-                                <li className="list-group-item">Direccion exacta: <span className='fw-bold'> {request.direccionExactaLocalizacionPropiedad}</span></li>
+                                <li className="list-group-item">Provincia: <input type="text" className='form-control form-control-sm border-0' name='provinciaLocalizacionPropiedad' value={formValues.provinciaLocalizacionPropiedad} onChange={handleInputChange} /> </li>
+                                <li className="list-group-item">Canton: <input type="text" className='form-control form-control-sm border-0' name='cantonLocalizacionPropiedad' value={formValues.cantonLocalizacionPropiedad} onChange={handleInputChange} /> </li>
+                                <li className="list-group-item">Distrito: <input type="text" className='form-control form-control-sm border-0' name='distritoLocalizacionPropiedad' value={formValues.distritoLocalizacionPropiedad} onChange={handleInputChange} /> </li>
+                                <li className="list-group-item">Direccion exacta: <input type="text" className='form-control form-control-sm border-0' name='direccionExactaLocalizacionPropiedad' value={formValues.direccionExactaLocalizacionPropiedad} onChange={handleInputChange} /> </li>
                             </ul>
 
                         </div>
@@ -45,48 +57,57 @@ export const PrevistaNuevaAdmin = React.forwardRef(({ request }, ref) => {
                             <ul className="list-group">
                                 <li className="list-group-item active" aria-current="true">Servicio Requerido</li>
                                 <li className="list-group-item">Servicio requerido: <span className='fw-bold'>Agua Potable</span></li>
-                                <li className="list-group-item">Tipo de solicitud: <span className='fw-bold'>{request.tipoSolicitud}</span></li>
-                                <li className="list-group-item">Cantidad: <span className='fw-bold'> {request.cantidadTipoSolicitud}</span></li>
+                                <li className="list-group-item">Tipo de solicitud: <input type="text" className='form-control form-control-sm border-0' name='tipoSolicitud' value={request.tipoSolicitud} onChange={handleInputChange} /></li>
+                                <li className="list-group-item">Cantidad: <input type="text" className='form-control form-control-sm border-0' name='cantidadTipoSolicitud' value={request.cantidadTipoSolicitud} onChange={handleInputChange} /> </li>
                             </ul>
                         </div>
-                        <div className="col-md-4 page-break">
+                        <div className="col-md-4 my-2">
                             <ul className="list-group">
                                 <li className="list-group-item active" aria-current="true">Datos de la propiedad</li>
-                                <li className="list-group-item">Naturaleza del inmueble: <span className='fw-bold'> {request.naturaleza}</span></li>
+                                <li className="list-group-item">Naturaleza del inmueble:<input type="text" className="form-control form-control-sm border-0" name='naturaleza' value={formValues.naturaleza} onChange={handleInputChange} /></li>
                                 <li className="list-group-item">Numero de Matricula o Finca:
                                     {request.tituloPropiedadDerecho ?
-                                        <span className="fw-bold" > {request.tituloPropiedadProvincia}-{request.tituloPropiedadNumero}-{request.tituloPropiedadDerecho}</span>
+                                        <div className="input-group input-group-sm ">
+                                            <input type="number" className="form-control" name='tituloPropiedadProvincia' value={formValues.tituloPropiedadProvincia} onChange={handleInputChange} />
+                                            <span className="input-group-text">-</span>
+                                            <input type="number" className="form-control" name='tituloPropiedadNumero' value={formValues.tituloPropiedadNumero} onChange={handleInputChange} />
+                                            <span className="input-group-text">-</span>
+                                            <input type="number" className="form-control" name='tituloPropiedadDerecho' value={formValues.tituloPropiedadDerecho} onChange={handleInputChange} />
+                                        </div>
                                         :
-                                        <span className="fw-bold" > {request.tituloPropiedad}</span>
+                                        <input type="text" className='form-control form-control-sm border-0' name='tituloPropiedad' value={formValues.tituloPropiedad} onChange={handleInputChange} />
                                     }
 
                                 </li>
-                                <li className="list-group-item">Titular del inmueble: <span className='fw-bold'> {request.titularInmueble}</span></li>
+                                <li className="list-group-item">Titular del inmueble:<input type="text" className='form-control form-control-sm  border-0' name='titularInmueble' value={formValues.titularInmueble} onChange={handleInputChange} /> </li>
                                 <li className="list-group-item">Cuenta con plano?:
-
-                                    <span className='fw-bold'> {request.cuentaConPlano}</span>
-
-
+                                    <input type="text" className="form-control form-control-sm border-0" name='cuentaConPlano' value={request.cuentaConPlano} onChange={handleInputChange} />
                                 </li>
                                 {request.cuentaConPlano !== 'No' &&
                                     <li className="list-group-item">Plano:
                                         {request.planoCatastroProvincia ?
-                                            <span className='fw-bold'> {request.planoCatastroProvincia}-{request.planoCatastroNumero}-{request.planoCatastroAño}</span>
+                                            <div className="input-group input-group-sm ">
+                                                <input type="number" className="form-control" name='planoCatastroProvincia' value={formValues.planoCatastroProvincia} onChange={handleInputChange} />
+                                                <span className="input-group-text">-</span>
+                                                <input type="number" className="form-control" name='planoCatastroNumero' value={formValues.planoCatastroNumero} onChange={handleInputChange} />
+                                                <span className="input-group-text">-</span>
+                                                <input type="number" className="form-control" name='planoCatastroAño' value={formValues.planoCatastroAño} onChange={handleInputChange} />
+                                            </div>
                                             :
-                                            <span className='fw-bold'> {request.planoAgrimesura}</span>
+                                            <input type="text" className='form-control form-control-sm border-0' name='planoAgrimesura' value={formValues.planoAgrimesura} onChange={handleInputChange} />
                                         }
                                     </li>
                                 }
                             </ul>
 
                         </div>
-                        <div className="col-md-4 ">
+                        <div className="col-md-4 my-2">
                             <ul className="list-group">
-                                <li className="list-group-item page-break active" aria-current="true">Medios para la notificacion</li>
-                                <li className="list-group-item">N Telefono 1: <span className='fw-bold'> {request.mediosNotificacionTelefono1}</span></li>
-                                <li className="list-group-item">Correo 1: <span className='fw-bold'> {request.mediosNotificacionCorreo1}</span></li>
-                                
-                                <li className="list-group-item">Direccion fisica exacta: <span className='fw-bold'> {request.mediosNotificacionDireccionExacta}</span></li>
+                                <li className="list-group-item active" aria-current="true">Medios para la notificacion</li>
+                                <li className="list-group-item">N Telefono 1: <input type="text" className='form-control form-control-sm border-0' name='mediosNotificacionTelefono1' value={formValues.mediosNotificacionTelefono1} onChange={handleInputChange} /></li>
+                                <li className="list-group-item">Correo 1: <input type="text" className='form-control form-control-sm border-0' name='mediosNotificacionCorreo1' value={formValues.mediosNotificacionCorreo1} onChange={handleInputChange} /> </li>
+
+                                <li className="list-group-item">Direccion fisica exacta: <input type="text" className='form-control form-control-sm border-0' name='mediosNotificacionDireccionExacta' value={formValues.mediosNotificacionDireccionExacta} onChange={handleInputChange} /> </li>
                             </ul>
                         </div>
                         <div className="col-md-4">
@@ -94,35 +115,56 @@ export const PrevistaNuevaAdmin = React.forwardRef(({ request }, ref) => {
                                 <li className="list-group-item active" aria-current="true">Forma para cancelar la tarifa de derecho de conexion</li>
                                 <li className="list-group-item">Forma:
                                     {request.formaPago === '1' &&
-                                        <span className='fw-bold'> En efectivo en un solo tracto, previo a la conexion del servicio</span>
+                                        <input type="text" className='form-control form-control-sm border-0' name='formaPago' value='En efectivo en un solo tracto, previo a la conexion del servicio' onChange={handleInputChange} />
                                     }
                                     {request.formaPago === '2' &&
-                                        <span className='fw-bold'> Incluir el monto por tarifa de dececho de conexion en la primer facturacion</span>
+                                        <input type="text" className='form-control form-control-sm border-0' name='formaPago' value='Incluir el monto por tarifa de dececho de conexion en la primer facturacion' onChange={handleInputChange} />
                                     }
                                     {request.formaPago === '3' &&
-                                        <span className='fw-bold'> Arreglo de pago</span>
+                                        <input type="text" className='form-control form-control-sm border-0' name='formaPago' value='Arreglo de pago' onChange={handleInputChange} />
                                     }
                                 </li>
                             </ul>
                         </div>
-                        <div className="col-md-12" >
+                        <div className="col-md-12 my-2" >
                             <ul className="list-group">
                                 <li className="list-group-item active" aria-current="true">Imagenes</li>
-                                <li className="list-group-item">Foto cedula:
-                                    {request.urlCedulaPersona ?
+                                {request.urlCedulaPersona &&
+                                    <li className="list-group-item">Foto cedula:
                                         <img src={request.urlCedulaPersona} style={{ objectFit: "contain", height: "50vh", width: "100%" }} alt='cedulaPersona' />
-                                        :
-                                        <span className='fw-bold'>No hay foto</span>
-                                    }
-                                </li>
+
+                                    </li>
+                                }
                                 {request.urlPersoneriaJuridica &&
                                     <li className="list-group-item">Foto personeria juridica:
                                         <img src={request.urlPersoneriaJuridica} style={{ objectFit: "contain", height: "50vh", width: "100%" }} alt='personeriaJuridca' />
                                     </li>
                                 }
+                                {request.urlPlanoInmueble &&
+                                    <li className="list-group-item">Foto plano inmueble:
+                                        <img src={request.urlPlanoInmueble} style={{ objectFit: "contain", height: "50vh", width: "100%" }} alt='personeriaJuridca' />
+                                    </li>
+                                }
 
                             </ul>
                         </div>
+                        <div className="col-md-12 my-2">
+                            <ul className="list-group">
+                                <li className="list-group-item active" aria-current="true">Firma del solicitante,representante legal o autorizado</li>
+                                <li className="list-group-item">Nombre completo: <input type="text" className="form-control form-control-sm border-0" /></li>
+                                <li className="list-group-item">#Cedula:<input type="text" className="form-control form-control-sm border-0" /></li>
+                                <li className="list-group-item">Frima:<input type="text" className="form-control form-control-sm border-0" /></li>
+                            </ul>
+                        </div>
+                        <div className="col-md-12 my-2">
+                            <ul className="list-group">
+                                <li className="list-group-item active" aria-current="true">Uso exclusivo de la ASADA</li>
+                                <li className="list-group-item">Nombre completo: <input type="text" className="form-control form-control-sm border-0" /></li>
+                                <li className="list-group-item">Firmadel funcionario ASADA:<input type="text" className="form-control form-control-sm border-0" /></li>
+                                <li className="list-group-item">Fecha:<input type="text" className="form-control form-control-sm border-0" /></li>
+                            </ul>
+                        </div>
+
                     </div>
                 </div>
             </div>

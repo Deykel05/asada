@@ -7,7 +7,7 @@ import { loadRequests } from '../helpers/loadRequests';
 export const startNewRequest = (newRequest) => {
 
     return async () => {
-        const doc = await addDoc(collection(db, `mAznoXO4HSVNtTTO0UrrLblODKU2`, 'services/requests'), newRequest);
+        const doc = await addDoc(collection(db, `i6SEixuoEufs9Wusj7L2WSC5uWq2`, 'services/requests'), newRequest);
         Swal.fire('Solicitud Enviada con exito', newRequest.tipoSolicitud, 'success')
             .then(function () {
                 window.location = "/";
@@ -60,16 +60,25 @@ export const activeRequestOff = () => ({
     type: types.requestsActiveClean,
 });
 
-// export const addNewRequest = (id, request) => ({
-//     type: types.requestsAddNew,
-//     payload: {
-//         id,
-//         ...request
-//     }
-// })
 export const addNewRequest = (id, request) => ({
     type: types.requestsAddNew,
     payload: {
         ...request
     }
+})
+export const startDeleting = (id) => {
+    return async (dispatch, getState) => {
+        const { uid } = getState().auth;
+        const requestRef = doc(db, `${uid}/services/requests/${id}`);
+        await deleteDoc(requestRef);
+
+        dispatch(deleteRequest(id));
+    }
+}
+export const deleteRequest = (id) => ({
+    type: types.requestsDelete,
+    payload: id
+})
+export const requestsLogout = () => ({
+    type: types.requestsLogoutClean
 })

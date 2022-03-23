@@ -11,6 +11,7 @@ export const types = {
     requestsActive: '[Requests] Active request',
     requestsActiveClean: '[Requests] Active clean request',
     requestsClean: '[Requests] Clean request',
-
+    requestsDelete: '[Requests] Delete request',
+    requestsLogoutClean:'[Requests] Clean logout request',
     imagesLoadUrl: '[Images] Load image url'
 }

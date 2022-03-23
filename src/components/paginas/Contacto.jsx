@@ -19,7 +19,7 @@ const Contacto = () => {
         <section className="contact p-5 my-5" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
             <div className="container">
 
-                <div className="row">
+                <div className="row py-2">
 
                     <div className="col-lg-6">
 

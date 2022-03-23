@@ -69,7 +69,7 @@ const NuevaConexion = () => {
 
         </form>
       </div>
-      <Card.Footer className="text-muted">2 days ago</Card.Footer>
+      <Card.Footer className="text-muted">La ASADA Florida cuenta con 3 dias habiles para contestar la solicitud</Card.Footer>
     </div>
   )
 }

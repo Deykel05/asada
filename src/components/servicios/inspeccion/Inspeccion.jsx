@@ -46,27 +46,27 @@ const Inspeccion = () => {
                                     <div className='mx-2 my-3'>
                                         <label className='form-label' >Suscrito</label>
                                         <div className="input-group input-group-sm mb-1">
-                                            <input type="text" className="form-control" placeholder="Nombre" name='nombreSuscrito' onChange={handleInputChange} required />
+                                            <input type="text" className="form-control" placeholder="Nombre" name='nombrePersona' onChange={handleInputChange} required />
                                             <span className="input-group-text">-</span>
-                                            <input type="text" className="form-control" placeholder="#1 Apellido" name='primerApellidoSuscrito' onChange={handleInputChange} required />
+                                            <input type="text" className="form-control" placeholder="#1 Apellido" name='primerApellidoPersona' onChange={handleInputChange} required />
                                             <span className="input-group-text">-</span>
-                                            <input type="text" className="form-control" placeholder="#2 Apellido" name='segundoApellidoSuscrito' onChange={handleInputChange} required />
+                                            <input type="text" className="form-control" placeholder="#2 Apellido" name='segundoApellidoPersona' onChange={handleInputChange} required />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-md-6 ">
                                     <div className='mx-2 my-3'>
                                         <label className='form-label' >Numero de identificacion</label>
-                                        <input type="number" className="form-control form-control-sm" placeholder="# Identificacion" name='cedulaSuscrito' onChange={handleInputChange} required />
+                                        <input type="number" className="form-control form-control-sm" placeholder="# Identificacion" name='cedulaPersona' onChange={handleInputChange} required />
                                     </div>
                                 </div>
                                 <div className="col-md-6">
                                     <div className='mx-2 my-3'>
                                         <label className='form-label' >Medios de comunicacion</label>
                                         <div className="input-group input-group-sm mb-2">
-                                            <input type="number" className="form-control" placeholder="# Telefono" name='telefonoSuscrito' onChange={handleInputChange} required />
+                                            <input type="number" className="form-control" placeholder="# Telefono" name='mediosNotificacionTelefono1' onChange={handleInputChange} required />
                                             <span className="input-group-text">-</span>
-                                            <input type="email" className="form-control" placeholder="Correo Electronico" name='correoSuscrito' onChange={handleInputChange} required />
+                                            <input type="email" className="form-control" placeholder="Correo Electronico" name='mediosNotificacionCorreo1' onChange={handleInputChange} required />
 
                                         </div>
                                     </div>
