@@ -13,7 +13,7 @@ const NavbarComp = () => {
           <Nav className="me-auto">
             <NavDropdown title="Solicitudes" id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to="/disponibilidad">Disponibilidad</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/nuevaConexion">Nueva Conexion</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/nuevaConexion">Prevista Nueva</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/traspaso">Traspaso Paja</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/suspension">SuspensionServicio</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/inspeccion">Inspeccion</NavDropdown.Item>

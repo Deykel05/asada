@@ -6,9 +6,8 @@ import { loadRequests } from '../helpers/loadRequests';
 
 export const startNewRequest = (newRequest) => {
 
-    return async (dispatch) => {
+    return async () => {
         const doc = await addDoc(collection(db, `mAznoXO4HSVNtTTO0UrrLblODKU2`, 'services/requests'), newRequest);
-        //dispatch(addNewRequest(doc.id, newRequest));
         Swal.fire('Solicitud Enviada con exito', newRequest.tipoSolicitud, 'success')
             .then(function () {
                 window.location = "/";
@@ -22,6 +21,30 @@ export const startLoadingRequests = (uid) => {
 
     }
 }
+export const startSaveRequest = (request) => {
+    return async (dispatch, getState) => {
+        const { uid } = getState().auth;
+
+        const requestToFirestore = { ...request }
+        delete requestToFirestore.id
+        const requesteRef = doc(db, `${uid}/services/requests/${request.id}`)
+        await updateDoc(requesteRef, requestToFirestore);
+
+        dispatch(refreshRequest(request.id, requestToFirestore));
+        Swal.fire('Guardado','La solicitud se actualizó!', 'success');
+    }
+}
+
+export const refreshRequest = (id, request) => ({
+    type: types.requestsUpdated,
+    payload: {
+        id,
+        request: {
+            id,
+            ...request
+        }
+    }
+})
 export const setRequests = (requests) => ({
     type: types.requestsLoad,
     payload: requests
@@ -33,6 +56,10 @@ export const activeRequest = (id, note) => ({
         ...note
     }
 });
+export const activeRequestOff = () => ({
+    type: types.requestsActiveClean,
+});
+
 // export const addNewRequest = (id, request) => ({
 //     type: types.requestsAddNew,
 //     payload: {

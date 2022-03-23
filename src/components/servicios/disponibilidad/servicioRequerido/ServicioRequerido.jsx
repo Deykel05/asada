@@ -17,24 +17,25 @@ const ServicioRequerido = ({ handleInputChange, formValues }) => {
             <div className="col-10 card bg-light my-2 p-3">
                 <h5 >Servicio Requerido</h5>
                 <hr />
-                <div className="row ">
-                    <div className="col-12 ">
+                <div className="row gx-2 gy-1 align-items-center">
+                    <div className="col-md-6 ">
                         <div className="mx-2 my-3">
-                            <select className="form-select mt-5" name='servicioRequerido' onChange={handleInputChange} required>
+                            <label className='form-label'>Servicio Requerido</label>
+                            <select className="form-select form-select-sm" name='servicioRequerido' onChange={handleInputChange} required>
                                 <option value=''>Elija una opcion</option>
                                 <option>Agua Potable</option>
                             </select>
                         </div>
                     </div>
-                    <div className="col-12 mt-3">
+                    <div className="col-md-6">
                         <div className="mx-2 my-3" >
                             <label className='form-label'>Cantidad de Unidades Habitacionales en el Inmueble</label>
-                            <input className='form-control' type="number" placeholder="Cantidad" name='cantidadUnidadesHabitacionales' onChange={handleInputChange} required />
+                            <input className='form-control form-control-sm' type="number" placeholder="Cantidad" name='cantidadUnidadesHabitacionales' onChange={handleInputChange} required />
                         </div>
                     </div>
-                    <div className="col-12 mt-3">
+                    <div className="col-md-6">
                         <div className='mx-2 my-3'>
-                            <label className='form-label w-100' >Inmueble tiene servicios asociados?</label>
+                            <label className='form-label ' >Inmueble tiene servicios asociados?</label>
                             <div className='row justify-content-center' >
                                 <div className="col-auto">
                                     <div className="form-check ">
@@ -52,9 +53,14 @@ const ServicioRequerido = ({ handleInputChange, formValues }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-12 ">
+                    <div className="col-md-6">
                         <div className=" mx-2 my-3">
-                            {radioValue === '2' && <input type="number" placeholder='Numero de Medidor' className="form-control " name='numeroMedidor' onChange={handleInputChange} required />}
+                            {radioValue === '2' &&
+                                <>
+                                    <label className='form-label'>Numero de paja</label>
+                                    <input type="number" placeholder='Numero de paja' className="form-control form-control-sm" name='numeroMedidor' onChange={handleInputChange} required />
+                                </>
+                            }
                         </div>
                     </div>
 

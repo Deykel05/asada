@@ -36,10 +36,10 @@ const Corresponde = ({ handleInputChange, formValues }) => {
         <>
             <div className="col-1"></div>
             <div className="col-10 card bg-light my-2 p-3">
-                <h5 htmlFor="disabledSelect">La Solicitud de Constancia de Disponibilidad Corresponde a:</h5>
+                <h5 >La Solicitud de Constancia de Disponibilidad Corresponde a:</h5>
                 <hr />
-                <div className="row">
-                    <div className="col-6 ">
+                <div className="row justify-content-center">
+                    <div className="col-auto ">
                         <div className='mx-2 my-3'>
                             <div className="form-check ">
                                 <input className="form-check-input" type="radio" name='radioCorresponde' onChange={handleRadioChange} value='1' required />
@@ -47,45 +47,62 @@ const Corresponde = ({ handleInputChange, formValues }) => {
                                     Proyecto para visados de planos
                                 </label>
                             </div>
+                        </div>
+
+                    </div>
+                    <div className="col-auto">
+                        <div className='mx-2 my-3'>
                             <div className="form-check ">
                                 <input className="form-check-input" type="radio" name='radioCorresponde' onChange={handleRadioChange} value='2' />
                                 <label className="form-check-label" >
-                                    Proyetos realcionados en la construccion
+                                    Proyetos realacionados en la construccion
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <div className="col-6 ">
-                        {tipo === '1' ?
+                    <div className="col-md-6 ">
+                        {tipo === '1' &&
                             <div className="mx-2 my-3">
-                                <select className="form-select mb-1" name='correspondeA' onChange={handleInputChange} required>
+                                <label className='form-label'>Opciones</label>
+                                <select className="form-select form-select-sm" name='correspondeA' onChange={handleInputChange} required>
                                     <option value='' >Elija una opcion</option>
                                     <option>Fraccionamiento,Segregacion,Lotificacion</option>
                                     <option>Reunion de Fincas</option>
                                     <option>Rectificacion de medidas</option>
                                 </select>
-                                <input className='form-control' type="number" placeholder="Cantidad de Lotes" name='correspondeCantidadLotes' onChange={handleInputChange} required />
                             </div>
-                            : null
                         }
-                        {tipo === '2' ?
+                        {tipo === '2' &&
                             <div className="mx-2 my-3 ">
-                                <select className="form-select mb-1" name='correspondeA' onChange={handleInputChange} required>
+                                <label className='form-label'>Opciones</label>
+                                <select className="form-select form-select-sm" name='correspondeA' onChange={handleInputChange} required>
                                     <option value='' >Elija una opcion</option>
                                     <option>Nuevo Proyecto Constructivo</option>
                                     <option>Remodelacion</option>
                                     <option>Ampliacion</option>
                                 </select>
+                            </div>
+                        }
+                    </div>
 
-                                <div className="div">
-                                    <label className='mb-1'>Tipo de Proyecto</label>
-                                    <select className="form-select" name='correspondeTipoProyecto' onChange={handleInputChange} required>
-                                        <option value='' >Elija una opcion</option>
-                                        <option >Vivienda</option>
-                                        <option >Local Comercial</option>
-                                        <option>Granjas o proyectos Agroindustriales</option>
-                                    </select>
-                                </div>
+                    <div className="col-md-6">
+                        {tipo === '1' &&
+                            <div className="mx-2 my-3 ">
+                                <label className='form-label'>Cantidad de Lotes</label>
+                                <input className='form-control form-control-sm' type="number" placeholder="Cantidad de Lotes" name='correspondeCantidadLotes' onChange={handleInputChange} required />
+                            </div>
+                        }
+                        {tipo === '2' ?
+
+
+                            <div className="mx-2 my-3 ">
+                                <label className='form-label'>Tipo de Proyecto</label>
+                                <select className="form-select form-select-sm" name='correspondeTipoProyecto' onChange={handleInputChange} required>
+                                    <option value='' >Elija una opcion</option>
+                                    <option >Vivienda</option>
+                                    <option >Local Comercial</option>
+                                    <option>Granjas o proyectos Agroindustriales</option>
+                                </select>
                             </div>
                             : null
                         }

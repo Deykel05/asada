@@ -5,6 +5,7 @@ import { useForm } from '../../../hooks/useForm';
 const Queja = () => {
 
     const [handleInputChange, reset] = useForm({
+        estado:'1',
         tipoSolicitud: 'queja',
         fecha: new Date().getTime()
     });

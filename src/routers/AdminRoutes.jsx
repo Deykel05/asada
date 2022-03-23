@@ -22,12 +22,10 @@ const AdminRoutes = () => {
             <div id="layoutSidenav">
                 <NavVertical />
                 <div id="layoutSidenav_content">
-                    
+
                     <Routes>
                         <Route path='historial' element={<Historial />}></Route>
-                        
                         <Route path='/' element={<ListaSolicitudes />}></Route>
-
                     </Routes>
                     <Footer />
                 </div>

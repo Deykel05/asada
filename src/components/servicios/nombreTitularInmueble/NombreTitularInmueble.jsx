@@ -61,7 +61,7 @@ const NombreTitularInmueble = ({ handleInputChange, formValues, setValues }) => 
                                 </div>
                                 <div className="col-6 p-2">
                                     <div className='mx-2 my-3'>
-                                        <input type="number" className="form-control form-control-sm" name='numeroIdentificacionPersona' placeholder="# Identificacion" onChange={handleInputChange} required />
+                                        <input type="number" className="form-control form-control-sm" name='cedulaPersona' placeholder="# Identificacion" onChange={handleInputChange} required />
                                     </div>
                                 </div>
                             </div>
@@ -109,8 +109,8 @@ const NombreTitularInmueble = ({ handleInputChange, formValues, setValues }) => 
 
                         <div className="col-6 py-5">
                             <div className='mx-2 my-3'>
-                                <p className='py-1'>En el siguiente espacio adjunte una foto de su cedula</p>
-                                <input type="file" name='urlCedulaPersona' className="form-control mb-3" onChange={handleFile} required />
+                                <p className='py-1'>En el siguiente espacio adjunte una foto de su cedula(OPCIONAL)</p>
+                                <input type="file" name='urlCedulaPersona' className="form-control mb-3" onChange={handleFile} />
                             </div>
 
                         </div>
@@ -126,8 +126,8 @@ const NombreTitularInmueble = ({ handleInputChange, formValues, setValues }) => 
                         {tipoPersona && tipoPersona === '2' ?
                             <div className="col-6 py-5">
                                 <div className='mx-2 my-3'>
-                                    <p className='py-1'>En el siguiente espacio adjunte una foto de la personeria juridica</p>
-                                    <input type="file" className="form-control mb-3" name='urlPersoneriaJuridica' onChange={handleFile} required />
+                                    <p className='py-1'>En el siguiente espacio adjunte una foto de la personeria juridica(OPCIONAL)</p>
+                                    <input type="file" className="form-control mb-3" name='urlPersoneriaJuridica' onChange={handleFile}  />
                                 </div>
                             </div>
                             : null
@@ -136,8 +136,10 @@ const NombreTitularInmueble = ({ handleInputChange, formValues, setValues }) => 
 
                             <div className="col-6 mb-3" >
                                 <div className='mx-2 my-3 bg-white' style={{ height: "250px" }}>
-                                    <img src={urlPersoneriaJuridica} alt="" style={{ objectFit: "cover", height: "100%", width: "100%" }} />
-
+                                    {urlPersoneriaJuridica ?
+                                        <img src={urlPersoneriaJuridica} alt="" style={{ objectFit: "cover", height: "100%", width: "100%" }} />
+                                        : <p>No hay imagen por mostrar</p>
+                                    }
                                 </div>
 
                             </div>

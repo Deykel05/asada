@@ -9,13 +9,14 @@ import '../../../estilos/servicios/styles.css';
 import Corresponde from './solicitudCorrespondeA/Corresponde';
 import Informacion from './informacion/Informacion';
 import { useForm } from '../../../hooks/useForm';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { startNewRequest } from '../../../actions/requests';
 const Disponibilidad = () => {
 
   const dispatch = useDispatch();
 
   const [formValues, handleInputChange, reset, setValues] = useForm({
+    estado: '1',
     tipoSolicitud: 'disponibilidad',
     naturaleza: '',
     fecha: new Date().getTime(),

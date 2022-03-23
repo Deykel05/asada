@@ -12,9 +12,9 @@ const TipoSolicitudNuevaConexion = ({ handleInputChange }) => {
                         <label className='form-label' >Tipo de Solicitud</label>
                         <select className="form-select" name='tipoSolicitud' onChange={handleInputChange} required>
                             <option value='' >Elija una opcion</option>
-                            <option value='Nueva Conexion' >Nueva Conexion</option>
-                            <option value='Individualizacion' >Individualizacion</option>
-                            <option value='Traslado de Conexion' >Traslado de Conexion</option>
+                            <option value='nueva conexion' >Nueva Conexion</option>
+                            <option value='individualizacion' >Individualizacion</option>
+                            <option value='traslado de conexion' >Traslado de Conexion</option>
                         </select>
                     </div>
                     <div className="col-6">

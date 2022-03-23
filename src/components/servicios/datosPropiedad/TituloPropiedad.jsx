@@ -21,15 +21,13 @@ const TituloPropiedad = ({ handleInputChange, formValues }) => {
   return <>
     {naturaleza === 'Inmueble Inscrito' || naturaleza === 'Parcelas Agricolas' ?
       <div className='mx-2 my-3'>
-        <div>
-          <label className='form-label mx-5'>Titulo de Propiedad</label>
-        </div>
-        <div className="input-group input-group-sm mb-3">
-          <input type="number" className="form-control" name='tituloPropiedadProvincia' placeholder="Provincia" onChange={handleInputChange} required/>
+        <label className='form-label '>Numero de Matricula o Finca</label>
+        <div className="input-group input-group-sm ">
+          <input type="number" className="form-control" name='tituloPropiedadProvincia' placeholder="Provincia" onChange={handleInputChange} required />
           <span className="input-group-text">-</span>
-          <input type="number" className="form-control" name='tituloPropiedadNumero' placeholder="Numero" onChange={handleInputChange} required/>
+          <input type="number" className="form-control" name='tituloPropiedadNumero' placeholder="Numero" onChange={handleInputChange} required />
           <span className="input-group-text">-</span>
-          <input type="number" className="form-control" name='tituloPropiedadDerecho' placeholder="Derecho" onChange={handleInputChange} required/>
+          <input type="number" className="form-control" name='tituloPropiedadDerecho' placeholder="Derecho" onChange={handleInputChange} required />
         </div>
       </div>
       : null
@@ -37,10 +35,8 @@ const TituloPropiedad = ({ handleInputChange, formValues }) => {
     {
       naturaleza === 'Terreno sin inscribir' ?
         < div className="mx-2 my-3 ">
-          <div>
-            <label className='form-label mx-5'>Titulo de Propiedad</label>
-          </div>
-          <select className="form-select" onChange={handleInputChange} name='tituloPropiedad' required>
+          <label className='form-label '>Numero de Matricula o Finca</label>
+          <select className="form-select form-select-sm" onChange={handleInputChange} name='tituloPropiedad' required>
             <option value='' >Elija una opcion</option>
             <option >Declaracion Jurada Privada</option>
             <option >Declaracion Jurada Protocolizada</option>

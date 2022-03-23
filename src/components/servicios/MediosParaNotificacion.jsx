@@ -11,16 +11,14 @@ const MediosParaNotificacion = ({ handleInputChange }) => {
                     <div className="row ">
                         <div className="col-6 ">
                             <div className='mx-2 my-3'>
-                                <input type="number" className="form-control form-control-sm mb-1" placeholder="# Telefono 1" name='mediosNotificacionTelefono1' onChange={handleInputChange} required/>
-                                <input type="number" className="form-control form-control-sm mb-3" placeholder="# Telefono 2" name='mediosNotificacionTelefono2' onChange={handleInputChange} required/>
+                                <input type="number" className="form-control form-control-sm mb-1" placeholder="# Telefono" name='mediosNotificacionTelefono1' onChange={handleInputChange} required/>
                             </div>
 
                         </div>
 
                         <div className="col-6 ">
                             <div className='mx-2 my-3'>
-                                <input type="email" className="form-control form-control-sm mb-1" placeholder="Correo 1" name='mediosNotificacionCorreo1' onChange={handleInputChange} required/>
-                                <input type="email" className="form-control form-control-sm mb-3" placeholder="Correo 2" name='mediosNotificacionCorreo2' onChange={handleInputChange} required/>
+                                <input type="email" className="form-control form-control-sm mb-1" placeholder="Correo" name='mediosNotificacionCorreo1' onChange={handleInputChange} required/>
                             </div>
                         </div>
                         <div className="col-12">

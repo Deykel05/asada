@@ -6,8 +6,10 @@ export const types = {
     uiFinishLoading: '[UI] Finish loading',
 
     requestsAddNew: '[Requests] Add new request',
+    requestsUpdated: '[Requests] Updated request',
     requestsLoad: '[Requests] Load request',
     requestsActive: '[Requests] Active request',
+    requestsActiveClean: '[Requests] Active clean request',
     requestsClean: '[Requests] Clean request',
 
     imagesLoadUrl: '[Images] Load image url'

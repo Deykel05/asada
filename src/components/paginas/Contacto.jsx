@@ -1,7 +1,20 @@
-import React from 'react'
-import {BiMap,BiEnvelope,BiPhoneCall} from 'react-icons/bi';
+import React, { useRef } from 'react'
+import { BiMap, BiEnvelope, BiPhoneCall } from 'react-icons/bi';
+import emailjs from '@emailjs/browser';
 import '../../estilos/contacto/styles.css';
 const Contacto = () => {
+    const form = useRef();
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm('service_fvjt5rk', 'template_dex7bnp', form.current, 'CE1VJd_qjnk1oJ5AY')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+        form.current.reset();
+    };
     return (
         <section className="contact p-5 my-5" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
             <div className="container">
@@ -13,23 +26,23 @@ const Contacto = () => {
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="info-box">
-                                    <BiMap style={{fontSize:"50px"}}/>
+                                    <BiMap style={{ fontSize: "50px" }} />
                                     <h3>Nuestra direccion</h3>
-                                    <p>A108 Adam Street, New York, NY 535022</p>
+                                    <p>Frente a la Escuela Florida</p>
                                 </div>
                             </div>
                             <div className="col-md-6">
                                 <div className="info-box">
-                                    <BiEnvelope style={{fontSize:"50px"}}/>
+                                    <BiEnvelope style={{ fontSize: "50px" }} />
                                     <h3>Envienos un correo</h3>
-                                    <p>info@example.com<br />contact@example.com</p>
+                                    <p>asadaflorida@gmail.com</p>
                                 </div>
                             </div>
                             <div className="col-md-6">
                                 <div className="info-box">
-                                    <BiPhoneCall style={{fontSize:"50px"}}/>
-                                    <h3>Numeros telefonicos</h3>
-                                    <p>+1 5589 55488 55<br />+1 6678 254445 41</p>
+                                    <BiPhoneCall style={{ fontSize: "50px" }} />
+                                    <h3>Numero telefonico</h3>
+                                    <p>Oficina: 8920-4319</p>
                                 </div>
                             </div>
                         </div>
@@ -37,27 +50,36 @@ const Contacto = () => {
                     </div>
 
                     <div className="col-lg-6">
+                        {/* <form ref={form} onSubmit={sendEmail}>
+                                <label>Name</label>
+                                <input type="text" name="to_name" />
+                                <label>Email</label>
+                                <input type="email" name="user_email" />
+                                <label>Message</label>
+                                <textarea name="message" />
+                                <button type="submit" className="btn btn-primary" >Enviar</button>
+                            </form> */}
                         <form action="forms/contact.php" method="post" role="form" className="php-email-form">
                             <div className="row">
                                 <div className="col-md-6 form-group">
-                                    <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" required />
+                                    <input type="text" name="name" className="form-control" id="name" placeholder="Su nombre" required />
                                 </div>
                                 <div className="col-md-6 form-group mt-3 mt-md-0">
-                                    <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" required />
+                                    <input type="email" className="form-control" name="email" id="email" placeholder="Su Correo" required />
                                 </div>
                             </div>
                             <div className="form-group mt-3">
-                                <input type="text" className="form-control" name="subject" id="subject" placeholder="Subject" required />
+                                <input type="text" className="form-control" name="subject" id="subject" placeholder="Asunto" required />
                             </div>
                             <div className="form-group mt-3">
-                                <textarea className="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                                <textarea className="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
                             </div>
                             <div className="my-3">
-                                <div className="loading">Loading</div>
-                                <div className="error-message"></div>
-                                <div className="sent-message">Your message has been sent. Thank you!</div>
+                                <div className="loading">Cargando</div>
+                                <div className="error-message">Error</div>
+                                <div className="sent-message">Su mensaje ha sido enviado. Gracias!</div>
                             </div>
-                            <div className="text-center"><button type="submit">Send Message</button></div>
+                            <div className="text-center"><button type="submit">Enviar mensaje</button></div>
                         </form>
                     </div>
 

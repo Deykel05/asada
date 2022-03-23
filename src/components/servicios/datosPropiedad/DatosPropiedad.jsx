@@ -7,8 +7,10 @@ import TituloPropiedad from './TituloPropiedad';
 const DatosPropiedad = ({ formValues, handleInputChange, reset }) => {
 
 
-    const { naturaleza, planoAgrimesura, planoCatastroProvincia, planoCatastroNumero, planoCatastroAño, cuentaConPlano } = formValues
-
+    const { naturaleza, planoAgrimesura, planoCatastroProvincia, planoCatastroNumero, planoCatastroAño, cuentaConPlano, urlPlanoInmueble } = formValues
+    if (naturaleza === '') {
+        delete formValues.cuentaConPlano;
+    }
     if (cuentaConPlano !== 'Si') {
         if (planoAgrimesura) {
             delete formValues.planoAgrimesura;
@@ -22,35 +24,39 @@ const DatosPropiedad = ({ formValues, handleInputChange, reset }) => {
         if (planoCatastroAño) {
             delete formValues.planoCatastroAño;
         }
+        if (urlPlanoInmueble) {
+            delete formValues.urlPlanoInmueble;
+        }
     }
+    console.log(formValues);
     return (
         <>
             <div className="col-1 "></div>
             <div className="col-10 card bg-light my-2 p-3">
                 <h5>Datos de la Propiedad</h5>
                 <hr />
-                <div className="row">
-                    <div className="col-12 ">
+                <div className="row gx-2 gy-1 align-items-center">
+                    <div className="col-md-12 ">
                         <NaturalezaInmueble
                             formValues={formValues}
                             handleInputChange={handleInputChange}
                             reset={reset}
                         />
                     </div>
-                    <div className="col-12">
+                    <div className="col-md-6">
 
                         <TituloPropiedad
                             formValues={formValues}
                             handleInputChange={handleInputChange}
                         />
                     </div>
-                    <div className="col-12">
+                    <div className="col-md-6">
                         <TitularInmueble
                             formValues={formValues}
                             handleInputChange={handleInputChange}
                         />
                     </div>
-                    <div className="col-12">
+                    <div className="col-md-12">
                         {naturaleza !== '' ?
                             <div className="mx-5 my-3">
                                 <label className='form-label w-100'  >Cuenta con plano ?</label>

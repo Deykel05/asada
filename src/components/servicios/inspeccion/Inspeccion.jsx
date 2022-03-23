@@ -13,6 +13,7 @@ const Inspeccion = () => {
 
 
     const [formValues, handleInputChange, reset, setValues] = useForm({
+        estado: '1',
         tipoSolicitud: 'inspeccion',
         fecha: new Date().getTime()
     });

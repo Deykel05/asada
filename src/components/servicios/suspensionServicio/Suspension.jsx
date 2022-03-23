@@ -4,12 +4,14 @@ import { useDispatch } from 'react-redux';
 import { startNewRequest } from '../../../actions/requests';
 import { useForm } from '../../../hooks/useForm';
 import MediosParaNotificacion from '../MediosParaNotificacion';
+import Informacion from './informacion/Informacion';
 
 const Suspension = () => {
     const dispatch = useDispatch();
     const listaTipos = ['Titular', 'Representante Legal', 'Poseedor'];
 
-    const [formValues, handleInputChange, reset, setValues] = useForm({
+    const [formValues, handleInputChange, reset] = useForm({
+        estado: '1',
         tipoSolicitud: 'suspension',
         fecha: new Date().getTime(),
         tipoPersona: '1'
@@ -37,24 +39,24 @@ const Suspension = () => {
                                     <div className='mx-2 my-3'>
                                         <label className='form-label' >El suscrito</label>
                                         <div className="input-group input-group-sm mb-1">
-                                            <input type="text" className="form-control" placeholder="Nombre" name='nombreSuscrito' onChange={handleInputChange} required />
+                                            <input type="text" className="form-control" placeholder="Nombre" name='nombrePersona' onChange={handleInputChange} required />
                                             <span className="input-group-text">-</span>
-                                            <input type="text" className="form-control" placeholder="#1 Apellido" name='primerApellidoSuscrito' onChange={handleInputChange} required />
+                                            <input type="text" className="form-control" placeholder="#1 Apellido" name='primerApellidoPersona' onChange={handleInputChange} required />
                                             <span className="input-group-text">-</span>
-                                            <input type="text" className="form-control" placeholder="#2 Apellido" name='segundoApellidoSuscrito' onChange={handleInputChange} required />
+                                            <input type="text" className="form-control" placeholder="#2 Apellido" name='segundoApellidoPersona' onChange={handleInputChange} required />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-md-6 ">
                                     <div className='mx-2 my-3'>
                                         <label className='form-label' >Documento de identificación numero</label>
-                                        <input type="number" className="form-control form-control-sm" placeholder="# Identificacion" name='cedulaSuscrito' onChange={handleInputChange} required />
+                                        <input type="number" className="form-control form-control-sm" placeholder="# Identificacion" name='cedulaPersona' onChange={handleInputChange} required />
                                     </div>
                                 </div>
                                 <div className="col-md-6 ">
                                     <div className='mx-2 my-3'>
                                         <label className='form-label' >En calidad de</label>
-                                        <select className="form-select form-select-sm" name='enCalidadDe' onChange={handleInputChange} required>
+                                        <select className="form-select form-select-sm" name='titularInmueble' onChange={handleInputChange} required>
                                             <option value='' >Elija una opcion</option>
                                             {listaTipos.map((n, x) =>
                                                 <option key={x + '-' + n}>{n}</option>)
@@ -65,7 +67,7 @@ const Suspension = () => {
                                 <div className="col-md-6">
                                     <div className='mx-2 my-3'>
                                         <label className='form-label' >Solicito formalmente a la ASADA Florida, la</label>
-                                        <select className="form-select form-select-sm" name='inmuebleConstaDe' onChange={handleInputChange} required>
+                                        <select className="form-select form-select-sm" name='accionSuspension' onChange={handleInputChange} required>
                                             <option value='' >Elija una opcion</option>
                                             <option >Suspension</option>
                                             <option >Eliminacion</option>
@@ -96,6 +98,7 @@ const Suspension = () => {
                         <MediosParaNotificacion
                             handleInputChange={handleInputChange}
                         />
+                        <Informacion />
                     </div>
                     <Button type="submit">Enviar Solicitud</Button>
                 </form>

@@ -18,6 +18,7 @@ const NuevaConexion = () => {
   const dispatch = useDispatch();
 
   const [formValues, handleInputChange, reset, setValues] = useForm({
+    estado: '1',
     naturaleza: '',
     fecha: new Date().getTime(),
     tipoPersona: '1'

@@ -26,6 +26,19 @@ export const requestsReducer = (state = initalState, action) => {
                     ...action.payload
                 }
             }
+        case types.requestsUpdated:
+            return {
+                ...state,
+                requests: state.requests.map(
+                    request => request.id === action.payload.id
+                        ? action.payload.request
+                        : request)
+            }
+        case types.requestsActiveClean:
+            return {
+                ...state,
+                active: null
+            }
         case types.requestsLoad:
             return {
                 ...state,
